@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SESClient, SendEmailCommand, SendEmailCommandOutput } from "@aws-sdk/client-ses";
 
-const ses = new SESClient({ region: "us-east-1" });
+const ses = new SESClient({ 
+  region: "us-east-1",
+  credentials: {
+    accessKeyId: process.env.MY_AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.MY_AWS_SECRET_ACCESS_KEY!,
+  },
+});
 
 export async function POST(request: NextRequest) {
   try {
