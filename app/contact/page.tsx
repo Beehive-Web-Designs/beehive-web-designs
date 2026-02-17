@@ -186,8 +186,7 @@ export default function ContactPage() {
     lastName: "",
     email: "",
     phone: "",
-    service: "",
-    budget: "",
+    service: "lump-sum",
     message: "",
   });
 
@@ -209,10 +208,67 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Message sent successfully", {
-      description: "We'll get back to you within 24 hours.",
+    setFormState({ status: "submitting", message: "" });
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Create URLSearchParams from FormData
+    const params = new URLSearchParams();
+    params.append("form-name", "contact");
+    
+    // Append all form fields
+    formData.forEach((value, key) => {
+      // Skip the bot-field
+      if (key !== "bot-field") {
+        params.append(key, value.toString());
+      }
     });
-  }
+
+    try {
+      // Submit to the current page path (Netlify forms work with any path)
+      const response = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+        redirect: "manual", // Prevent automatic redirect following
+      });
+
+      // Netlify forms return 200 on success, or 302 redirect
+      // Both indicate successful submission
+      if (response.ok || response.status === 302 || response.status === 0) {
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          service: "lump-sum",
+          message: "",
+        });
+        setFormState({
+          status: "success",
+          message: "Thank you! We'll get back to you within 24 hours.",
+        });
+        
+        // Show toast notification
+        toast.success("Message sent successfully!", {
+          description: "We'll get back to you within 24 hours.",
+        });
+      } else {
+        throw new Error(`Form submission failed with status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setFormState({
+        status: "error",
+        message: "Something went wrong. Please try again or email us directly.",
+      });
+      toast.error("Message failed to send", {
+        description: "Please try again or email us directly at spencer.s.hodson@gmail.com",
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0F0F1A] text-[#F0EDE6] overflow-x-hidden">
@@ -306,6 +362,7 @@ export default function ContactPage() {
                   <form
                     name="contact"
                     method="POST"
+                    action="/contact"
                     data-netlify="true"
                     data-netlify-honeypot="bot-field"
                     className="space-y-5"
@@ -432,7 +489,7 @@ export default function ContactPage() {
                         required
                         className="w-full rounded-xl border border-[rgba(245,166,35,0.15)] bg-[#0F0F1A]/60 px-4 py-3 text-sm text-[#F0EDE6] focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors font-[family-name:var(--font-space-grotesk)]"
                       >
-                        <option value="" className="bg-[#1A1A2E]">
+                        <option value="lump-sum" className="bg-[#1A1A2E]">
                           Lump Sum
                         </option>
                         <option value="monthly-subscription" className="bg-[#1A1A2E]">
@@ -465,7 +522,7 @@ export default function ContactPage() {
                     <Button
                       type="submit"
                       disabled={formState.status === "submitting"}
-                      className="w-full bg-honey hover:bg-honey-light text-[#0F0F1A] font-bold rounded-full py-6 text-base glow-honey disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="cursor-pointer w-full bg-honey hover:bg-honey-light text-[#0F0F1A] font-bold rounded-full py-6 text-base glow-honey disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {formState.status === "submitting" ? (
                         "Sending..."
