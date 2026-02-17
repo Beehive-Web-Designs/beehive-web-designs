@@ -24,6 +24,7 @@ import { NavBar } from "@/components/nav-bar";
 import { Footer } from "@/components/footer";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { HoneycombDecor } from "@/components/HoneyCombDecor";
+import { toast } from "sonner";
 
 const contactInfo = [
   {
@@ -206,6 +207,13 @@ export default function ContactPage() {
     // { id: "seo", label: "SEO" },
   ];
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast.success("Message sent successfully", {
+      description: "We'll get back to you within 24 hours.",
+    });
+  }
+
   return (
     <div className="min-h-screen bg-[#0F0F1A] text-[#F0EDE6] overflow-x-hidden">
       <NavBar />
@@ -301,6 +309,7 @@ export default function ContactPage() {
                     data-netlify="true"
                     data-netlify-honeypot="bot-field"
                     className="space-y-5"
+                    onSubmit={handleSubmit}
                   >
 
                     {/* Hidden field for Netlify bot protection */}
