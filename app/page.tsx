@@ -8,14 +8,10 @@ import {
   Server,
   ArrowRight,
   Star,
-  Menu,
-  X,
   Hexagon,
   Zap,
   Shield,
   Phone,
-  Mail,
-  MapPin,
   CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -42,13 +38,13 @@ export default function Home() {
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-nectar/5 blur-[100px] pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <FadeIn>
+          <FadeIn animateOnMount>
             <Badge className="mb-6 rounded-full border-honey/30 bg-honey/10 text-honey px-4 py-1.5 text-xs font-medium tracking-widest uppercase">
               Web Design &bull; Hosting & Maintenance &bull; SEO
             </Badge>
           </FadeIn>
 
-          <FadeIn delay={0.1}>
+          <FadeIn delay={0.1} animateOnMount>
             <h1 className="font-[family-name:var(--font-syne)] max-w-[800px] mx-auto text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-0.95 tracking-tight mb-6">
               Websites That Work
               <br />
@@ -56,7 +52,7 @@ export default function Home() {
             </h1>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.2} animateOnMount>
             <p className="mx-auto max-w-2xl text-lg sm:text-xl text-[#8A8A9A] leading-relaxed mb-10 font-[family-name:var(--font-space-grotesk)]">
               Beautiful websites built from scratch. We build, host, and optimize
               websites that bring real customers to your door. Small business is our
@@ -64,7 +60,7 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.3}>
+          <FadeIn delay={0.3} animateOnMount>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 asChild
@@ -115,9 +111,6 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           <FadeIn>
             <div className="text-center mb-16">
-              {/* <Badge className="mb-4 rounded-full border-honey/30 bg-honey/10 text-honey px-4 py-1.5 text-xs tracking-widest uppercase">
-                What We Do
-              </Badge> */}
               <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight">
                 Everything Your Business
                 <br />
@@ -197,9 +190,6 @@ export default function Home() {
             {/* Left: text */}
             <FadeIn>
               <div>
-                {/* <Badge className="mb-4 rounded-full border-honey/30 bg-honey/10 text-honey px-4 py-1.5 text-xs tracking-widest uppercase">
-                  Why Beehive
-                </Badge> */}
                 <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight mb-6">
                   A Hive of Creativity
                   <br />
@@ -301,9 +291,6 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn>
             <div className="text-center mb-16">
-              {/* <Badge className="mb-4 rounded-full border-honey/30 bg-honey/10 text-honey px-4 py-1.5 text-xs tracking-widest uppercase">
-                Testimonials
-              </Badge> */}
               <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight">
                 Loved by Small
                 <br />

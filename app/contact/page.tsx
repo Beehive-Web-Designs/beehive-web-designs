@@ -13,7 +13,6 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
@@ -24,7 +23,6 @@ import { NavBar } from "@/components/nav-bar";
 import { Footer } from "@/components/footer";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { HoneycombDecor } from "@/components/HoneyCombDecor";
-import { toast } from "sonner";
 
 const contactInfo = [
   {
@@ -95,41 +93,7 @@ const faqsByCategory: Record<FAQCategory, Array<{ q: string; a: string }>> = {
       q: "What happens when the 12 months minimum is over?",
       a: "Subscriptions continue indefinitely after the 12-month minimum. It takes us 2-3 years to match what we'd make from a lump sum payment, so we hope clients stay at least 5 years. By that point, your website should be generating enough value to essentially pay for itself, and we hope you'll continue to see the value in our ongoing work."
     },
-    // {
-    //   q: "What plans do you offer?",
-    //   a: "We offer several packages ranging from basic website design to full-service packages that include design, hosting, and SEO. Each plan is customizable to fit your specific needs.",
-    // },
-    // {
-    //   q: "Can I upgrade or downgrade my plan later?",
-    //   a: "Absolutely! You can change your plan at any time. We'll prorate any changes and make the transition seamless.",
-    // },
-    // {
-    //   q: "What's included in the hosting plans?",
-    //   a: "Our hosting plans include fast, reliable servers, SSL certificates, regular backups, security monitoring, and 24/7 support for hosted clients.",
-    // },
-    // {
-    //   q: "Do you offer monthly maintenance plans?",
-    //   a: "Yes! We offer monthly maintenance plans that include updates, security patches, backups, and ongoing support to keep your site running smoothly.",
-    // },
   ],
-  // seo: [
-  //   {
-  //     q: "How long does it take to see SEO results?",
-  //     a: "SEO is a long-term strategy. You may see some initial improvements within 3-6 months, but significant results typically take 6-12 months of consistent optimization.",
-  //   },
-  //   {
-  //     q: "What's included in your SEO services?",
-  //     a: "Our SEO services include keyword research, on-page optimization, technical SEO audits, content optimization, local SEO (if applicable), and monthly reporting on your progress.",
-  //   },
-  //   {
-  //     q: "Will you guarantee first page rankings?",
-  //     a: "While we can't guarantee specific rankings (no ethical SEO company can), we guarantee our work and will show you measurable improvements in your search visibility and organic traffic.",
-  //   },
-  //   {
-  //     q: "Do I need to be on your hosting to use your SEO services?",
-  //     a: "No, but it helps! We can provide SEO services for sites hosted elsewhere, though having everything under one roof makes optimization easier and more effective.",
-  //   },
-  // ],
   websites: [
     {
       q: "How long does the process take from start to finish?",
@@ -147,31 +111,6 @@ const faqsByCategory: Record<FAQCategory, Array<{ q: string; a: string }>> = {
       q: "How can I request edits to the website?",
       a: "You can request edits by emailing us directly at spencer.s.hodson@gmail.com. We'll review your request and get back to you within 24 hours. If you need to make a change that is more complex."
     }
-
-    // {
-    //   q: "How long does it take to build a website?",
-    //   a: "Most projects are completed within 2-4 weeks, depending on complexity. We'll give you a clear timeline during our initial consultation.",
-    // },
-    // {
-    //   q: "Do I need to provide content for my website?",
-    //   a: "We can work with whatever you have. If you need help with copywriting or photography, we offer content creation services or can recommend trusted partners.",
-    // },
-    // {
-    //   q: "What if I already have a website and need a redesign?",
-    //   a: "We handle redesigns all the time. We'll audit your existing site, preserve what works, and rebuild everything else from scratch.",
-    // },
-    // {
-    //   q: "Can I update the website myself?",
-    //   a: "Yes! We build with user-friendly CMS platforms so you can make text and image changes easily. We also provide training to get you comfortable.",
-    // },
-    // {
-    //   q: "What platforms do you build websites on?",
-    //   a: "We primarily work with modern, flexible platforms that are easy to manage. We'll recommend the best platform based on your needs, budget, and technical comfort level.",
-    // },
-    // {
-    //   q: "Do you offer ongoing support after launch?",
-    //   a: "Absolutely. All our packages include post-launch support, and we offer monthly maintenance plans to keep your site updated, secure, and performing at its best.",
-    // },
   ],
 };
 
@@ -203,7 +142,6 @@ export default function ContactPage() {
     { id: "pricing", label: "Pricing" },
     { id: "plans", label: "Plans" },
     { id: "websites", label: "Websites" },
-    // { id: "seo", label: "SEO" },
   ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -250,11 +188,6 @@ export default function ContactPage() {
           status: "success",
           message: "Thank you! We'll get back to you within 24 hours.",
         });
-        
-        // Show toast notification
-        toast.success("Message sent successfully!", {
-          description: "We'll get back to you within 24 hours.",
-        });
       } else {
         throw new Error(`Form submission failed with status: ${response.status}`);
       }
@@ -263,9 +196,6 @@ export default function ContactPage() {
       setFormState({
         status: "error",
         message: "Something went wrong. Please try again or email us directly.",
-      });
-      toast.error("Message failed to send", {
-        description: "Please try again or email us directly at spencer.s.hodson@gmail.com",
       });
     }
   };
@@ -280,15 +210,15 @@ export default function ContactPage() {
         <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <FadeIn delay={0.1}>
-            <h1 className="font-[family-name:var(--font-syne)] text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto">
+          <FadeIn delay={0.1} animateOnMount>
+            <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto">
               Let&apos;s Build Something
               <br />
               <span className="gradient-text">Amazing Together</span>
             </h1>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.2} animateOnMount>
             <p className="max-w-2xl text-lg sm:text-xl text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)] mx-auto">
               Whether you need a brand new website, better hosting, or help
               getting found on Google — we&apos;re here to help. Reach out and

@@ -86,15 +86,15 @@ export default function ServicesPage() {
         <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <FadeIn delay={0.1}>
-            <h1 className="font-[family-name:var(--font-syne)] text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-3xl mx-auto">
+          <FadeIn delay={0.1} animateOnMount>
+            <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-3xl mx-auto">
               Your Complete
               <br />
               <span className="gradient-text">Website Solution</span>
             </h1>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.2} animateOnMount>
             <p className="max-w-2xl text-lg sm:text-xl text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)] mx-auto">
               Stop juggling multiple vendors. Beehive handles your entire web
               presence — from design and development to hosting and SEO — so
@@ -103,7 +103,7 @@ export default function ServicesPage() {
           </FadeIn>
 
           {/* Quick nav */}
-          <FadeIn delay={0.3}>
+          <FadeIn delay={0.3} animateOnMount>
             <div className="flex flex-wrap gap-3 mt-10 justify-center">
               {services.map((s) => (
                 <a
@@ -191,34 +191,6 @@ export default function ServicesPage() {
       />
 
       {/* ─── CTA BANNER ─── */}
-      {/* <section className="py-20 relative overflow-hidden honeycomb-bg">
-        <div className="absolute inset-0 bg-gradient-to-r from-honey/10 via-honey/5 to-nectar/10 pointer-events-none" />
-        <HoneycombDecor className="absolute -left-10 top-0 w-40 h-40 opacity-20" />
-        <HoneycombDecor className="absolute -right-10 bottom-0 w-48 h-48 opacity-20" />
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-          <FadeIn>
-            <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-              Not Sure What You Need?
-              <br />
-              <span className="gradient-text">Let&apos;s Figure It Out Together.</span>
-            </h2>
-            <p className="text-[#8A8A9A] text-lg max-w-2xl mx-auto mb-8 font-[family-name:var(--font-space-grotesk)]">
-              Every business is different. Tell us about yours and we&apos;ll
-              recommend the perfect combination of services to get you where you
-              want to be.
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-honey hover:bg-honey-light text-[#0F0F1A] font-bold rounded-full px-10 py-6 text-base glow-honey"
-            >
-              <Link href="/contact">
-                Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </FadeIn>
-        </div>
-      </section> */}
       <CTABanner />
 
       <Footer />

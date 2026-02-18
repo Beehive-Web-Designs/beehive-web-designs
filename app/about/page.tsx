@@ -67,15 +67,15 @@ export default function AboutPage() {
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <FadeIn delay={0.1}>
-            <h1 className="font-[family-name:var(--font-syne)] text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto">
+          <FadeIn delay={0.1} animateOnMount>
+            <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto">
               Small Team,
               <br />
               <span className="gradient-text">Big Ambitions</span>
             </h1>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.2} animateOnMount>
             <p className="max-w-2xl text-lg sm:text-xl text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)] mx-auto">
               We started Beehive Web Designs because we believed small businesses deserve the
               same quality web presence as the big guys — without the big-agency
