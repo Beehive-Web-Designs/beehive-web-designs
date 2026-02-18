@@ -106,14 +106,14 @@ export default function ServicesPage() {
           <FadeIn delay={0.3} animateOnMount>
             <div className="flex flex-wrap gap-3 mt-10 justify-center">
               {services.map((s) => (
-                <a
+                <Link
                   key={s.id}
                   href={`#${s.id}`}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-honey/20 bg-honey/5 hover:bg-honey/10 hover:border-honey/40 transition-all text-sm text-honey font-medium font-[family-name:var(--font-space-grotesk)]"
                 >
                   <s.icon className="h-4 w-4" />
                   {s.title}
-                </a>
+                </Link>
               ))}
             </div>
           </FadeIn>

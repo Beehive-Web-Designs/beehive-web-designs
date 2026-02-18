@@ -3,9 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { LazyMotion, m, useReducedMotion } from "framer-motion";
 import { Hexagon, ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const loadFeatures = () =>
+  import("framer-motion").then((res) => res.domAnimation);
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -17,6 +20,7 @@ const navLinks = [
 export function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(245,166,35,0.1)] bg-[#0F0F1A]/80 backdrop-blur-xl">
@@ -73,11 +77,12 @@ export function NavBar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          className="md:hidden border-t border-[rgba(245,166,35,0.1)] bg-[#0F0F1A]/95 backdrop-blur-xl"
-        >
+        <LazyMotion features={loadFeatures}>
+          <m.div
+            initial={shouldReduceMotion ? false : { opacity: 0, height: 0 }}
+            animate={shouldReduceMotion ? false : { opacity: 1, height: "auto" }}
+            className="md:hidden border-t border-[rgba(245,166,35,0.1)] bg-[#0F0F1A]/95 backdrop-blur-xl"
+          >
           <div className="flex flex-col gap-4 p-6">
             {navLinks.map((item) => (
               <Link
@@ -102,7 +107,8 @@ export function NavBar() {
               </Link>
             </Button>
           </div>
-        </motion.div>
+        </m.div>
+        </LazyMotion>
       )}
     </nav>
   );

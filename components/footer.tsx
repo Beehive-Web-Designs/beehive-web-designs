@@ -90,13 +90,13 @@ export function Footer() {
           </p>
           <div className="flex gap-6">
             {["Privacy", "Terms"].map((link) => (
-              <a
+              <Link
                 key={link}
-                href="#"
+                href="/"
                 className="text-xs text-[#555] hover:text-honey transition-colors font-[family-name:var(--font-space-grotesk)]"
               >
                 {link}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

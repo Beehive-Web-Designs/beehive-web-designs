@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Users,
   Heart,
@@ -41,6 +42,7 @@ const values = [
 
 const team = [
   {
+    id: "spencer",
     name: "Spencer Hodson",
     role: "Founder & Lead Developer",
     image: "/team/spencer-bw2.png",
@@ -48,6 +50,7 @@ const team = [
     linkedin: "https://www.linkedin.com/in/spencer-hodson-3b4305229/",
   },
   {
+    id: "sky",
     name: "Sky Norton",
     role: "Lead Designer",
     image: "/team/sky-bw2.png",
@@ -205,16 +208,18 @@ export default function AboutPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 max-w-3xl gap-6 mx-auto">
             {team.map((member, i) => (
-              <FadeIn key={member.name} delay={i * 0.1}>
+              <FadeIn key={member.id} delay={i * 0.1}>
                 <Card className="bg-[#1A1A2E]/60 border-[rgba(245,166,35,0.1)] hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
                   <CardContent className="text-center">
 
                     {/* Avatar */}
                     <div className="mx-auto mb-8 w-40 h-40 rounded-full bg-honey/10 border border-honey/20 flex items-center justify-center group-hover:bg-honey/20 transition-colors overflow-hidden">
                       {member.image ? (
-                        <img
+                        <Image
                           src={member.image}
                           alt={member.name}
+                          width={160}
+                          height={160}
                           className="w-full h-full object-cover object-center"
                         />
                       ) : (

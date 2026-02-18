@@ -1,6 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, m, useReducedMotion } from "framer-motion";
+
+const loadFeatures = () =>
+  import("framer-motion").then((res) => res.domAnimation);
 import {
   Globe,
   Search,
@@ -13,6 +16,7 @@ import {
   Phone,
   CheckCircle2,
 } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +27,34 @@ import { Footer } from "@/components/footer";
 import { CTABanner } from "@/components/cta-banner";
 import { ProcessSection } from "@/components/process-section";
 import { PricingSection } from "@/components/pricing-section";
+
+function RotatingHex({
+  rotation,
+  duration,
+  className,
+  children,
+}: {
+  rotation: number;
+  duration: number;
+  className: string;
+  children: React.ReactNode;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <m.div
+      animate={{ rotate: rotation }}
+      transition={{ duration, repeat: Infinity, ease: "linear" }}
+      className={className}
+    >
+      {children}
+    </m.div>
+  );
+}
 
 export default function Home() {
   return (
@@ -66,9 +98,9 @@ export default function Home() {
                 size="lg"
                 className="bg-honey hover:bg-honey-light text-[#0F0F1A] font-bold rounded-full px-8 py-6 text-base glow-honey"
               >
-                <a href="#contact">
+                <Link href="/contact">
                   Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
+                </Link>
               </Button>
               <Button
                 asChild
@@ -76,7 +108,7 @@ export default function Home() {
                 size="lg"
                 className="rounded-full px-8 py-6 text-base border-honey/30 text-honey hover:bg-honey/10 hover:text-honey font-medium"
               >
-                <a href="#services">See What We Do</a>
+                <Link href="/services">See What We Do</Link>
               </Button>
             </div>
           </FadeIn>
@@ -242,38 +274,40 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-square max-w-md mx-auto relative">
                   {/* Animated honeycomb grid */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative w-full h-full">
-                      {/* Central hex */}
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-8"
-                      >
-                        <Hexagon className="w-full h-full text-honey/10 stroke-[0.5]" />
-                      </motion.div>
-                      <motion.div
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-16"
-                      >
-                        <Hexagon className="w-full h-full text-honey/20 stroke-[0.5]" />
-                      </motion.div>
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-24"
-                      >
-                        <Hexagon className="w-full h-full text-honey/30 stroke-[0.5]" />
-                      </motion.div>
-                      {/* Center icon */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 rounded-3xl bg-honey/10 flex items-center justify-center glow-honey">
-                          <Hexagon className="w-12 h-12 text-honey fill-honey/20" />
+                  <LazyMotion features={loadFeatures}>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        {/* Central hex */}
+                        <RotatingHex
+                          rotation={360}
+                          duration={60}
+                          className="absolute inset-8"
+                        >
+                          <Hexagon className="w-full h-full text-honey/10 stroke-[0.5]" />
+                        </RotatingHex>
+                        <RotatingHex
+                          rotation={-360}
+                          duration={90}
+                          className="absolute inset-16"
+                        >
+                          <Hexagon className="w-full h-full text-honey/20 stroke-[0.5]" />
+                        </RotatingHex>
+                        <RotatingHex
+                          rotation={360}
+                          duration={45}
+                          className="absolute inset-24"
+                        >
+                          <Hexagon className="w-full h-full text-honey/30 stroke-[0.5]" />
+                        </RotatingHex>
+                        {/* Center icon */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-24 h-24 rounded-3xl bg-honey/10 flex items-center justify-center glow-honey">
+                            <Hexagon className="w-12 h-12 text-honey fill-honey/20" />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </LazyMotion>
                 </div>
               </div>
             </FadeIn>

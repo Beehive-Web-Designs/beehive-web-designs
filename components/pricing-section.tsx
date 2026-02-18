@@ -171,7 +171,7 @@ export function PricingSection({
                     }`}
                   >
                     {buttonHref.startsWith("#") ? (
-                      <a href={buttonHref}>Get Started</a>
+                      <Link href={buttonHref}>Get Started</Link>
                     ) : (
                       <Link href={buttonHref}>Get Started</Link>
                     )}
