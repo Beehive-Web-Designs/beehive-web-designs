@@ -64,6 +64,7 @@ export function NavBar() {
 
         {/* Mobile toggle */}
         <button
+          aria-label="Toggle mobile menu"
           className="md:hidden text-[#F0EDE6]"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
