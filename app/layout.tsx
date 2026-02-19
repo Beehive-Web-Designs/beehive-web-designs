@@ -21,16 +21,14 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://beehivewebdesigns.com";
-  
+export async function generateMetadata(): Promise<Metadata> {  
   return {
     title: {
-      default: "Beehive Web Designs | Web Design, Hosting & SEO for Small Business",
+      default: "Beehive Web Designs | Web Design, Hosting & SEO for Small Businesses",
       template: "%s | Beehive Web Designs",
     },
     description:
-      "Beehive Web Designs builds beautiful, high-performing websites for small businesses. We handle web design, hosting, and SEO so you can focus on what you do best.",
+      "Beehive Web Designs creates high-performing websites for small businesses—design, hosting, and SEO handled so you can focus on running your business.",
     keywords: [
       "web design",
       "website development",
@@ -40,38 +38,58 @@ export async function generateMetadata(): Promise<Metadata> {
       "custom websites",
       "responsive web design",
       "website maintenance",
+      "Utah web design",
+      "Utah website development",
+      "Utah web designer",
+      "Utah SEO services",
+      "Utah web hosting",
+      "local web design Utah",
+      "small business web design Utah",
+      "affordable web design",
+      "professional website design",
+      "e-commerce websites",
+      "WordPress development",
+      "website redesign",
+      "local SEO Utah",
+      "business website design",
+      "mobile-friendly websites",
+      "website builder Utah",
+      "custom web development",
+      "website optimization",
+      "online presence",
+      "digital marketing",
+      "website analytics",
+      "content management system",
     ],
     authors: [{ name: "Beehive Web Designs" }],
     creator: "Beehive Web Designs",
     publisher: "Beehive Web Designs",
-    metadataBase: new URL(baseUrl),
     alternates: {
       canonical: "/",
     },
-    openGraph: {
-      type: "website",
-      locale: "en_US",
-      url: baseUrl,
-      siteName: "Beehive Web Designs",
-      title: "Beehive Web Designs | Web Design, Hosting & SEO for Small Business",
-      description:
-        "Beehive Web Designs builds beautiful, high-performing websites for small businesses. We handle web design, hosting, and SEO so you can focus on what you do best.",
-      images: [
-        {
-          url: `${baseUrl}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: "Beehive Web Designs - Web Design, Hosting & SEO Services",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Beehive Web Designs | Web Design, Hosting & SEO for Small Business",
-      description:
-        "Beautiful, high-performing websites for small businesses. We handle web design, hosting, and SEO so you can focus on what you do best.",
-      images: [`${baseUrl}/og-image.jpg`],
-    },
+    // openGraph: {
+    //   type: "website",
+    //   locale: "en_US",
+    //   siteName: "Beehive Web Designs",
+    //   title: "Beehive Web Designs | Web Design, Hosting & SEO for Small Business",
+    //   description:
+    //     "Beehive Web Designs creates high-performing websites for small businesses—design, hosting, and SEO handled so you can focus on running your business.",
+    //   images: [
+    //     {
+    //       url: `public/og-image.png`,
+    //       width: 1200,
+    //       height: 630,
+    //       alt: "Beehive Web Designs - Web Design, Hosting & SEO Services",
+    //     },
+    //   ],
+    // },
+    // twitter: {
+    //   card: "summary_large_image",
+    //   title: "Beehive Web Designs | Web Design, Hosting & SEO for Small Business",
+    //   description:
+    //     "Beehive Web Designs creates high-performing websites for small businesses—design, hosting, and SEO handled so you can focus on running your business.",
+    //   images: [`public/og-image.jpg`],
+    // },
     robots: {
       index: true,
       follow: true,
