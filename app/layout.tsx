@@ -116,6 +116,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${syne.variable} ${dmSans.variable}`}>
+      {/* <head>
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+
+      </head> */}
       <body className="antialiased font-[family-name:var(--font-dm-sans)]">
         {children}
         <Toaster />
