@@ -21,8 +21,9 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-export async function generateMetadata(): Promise<Metadata> {  
+export async function generateMetadata(): Promise<Metadata> {
   return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://beehivewebdesigns.com'),
     title: {
       default: "Beehive Web Designs | Web Design, Hosting & SEO for Small Businesses",
       template: "%s | Beehive Web Designs",
@@ -116,10 +117,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${syne.variable} ${dmSans.variable}`}>
-      {/* <head>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-
-      </head> */}
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className="antialiased font-[family-name:var(--font-dm-sans)]">
         {children}
         <Toaster />
