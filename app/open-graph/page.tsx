@@ -1,4 +1,15 @@
+import type { Metadata } from "next";
 import { Hexagon } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Open Graph preview",
+  description:
+    "Fixed-size layout used for Beehive Web Designs social sharing previews.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function OpenGraphPage() {
   return (
