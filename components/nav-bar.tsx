@@ -14,8 +14,16 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
+
+function isNavLinkActive(pathname: string, href: string): boolean {
+  if (href === "/blog") {
+    return pathname === "/blog" || pathname.startsWith("/blog/");
+  }
+  return pathname === href;
+}
 
 export function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -40,7 +48,7 @@ export function NavBar() {
               key={item.href}
               href={item.href}
               className={`text-sm font-medium transition-colors tracking-wide uppercase ${
-                pathname === item.href
+                isNavLinkActive(pathname, item.href)
                   ? "text-honey"
                   : "text-[#8A8A9A] hover:text-honey"
               }`}
@@ -90,7 +98,7 @@ export function NavBar() {
                 key={item.href}
                 href={item.href}
                 className={`text-sm font-medium transition-colors uppercase tracking-wide ${
-                  pathname === item.href
+                  isNavLinkActive(pathname, item.href)
                     ? "text-honey"
                     : "text-[#8A8A9A] hover:text-honey"
                 }`}
