@@ -103,9 +103,9 @@ export function PricingSection({
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {defaultPlans.map((plan, i) => (
-            <FadeIn key={plan.name} delay={i * 0.1}>
+            <FadeIn key={plan.name} delay={i * 0.1} className="h-full">
               <Card
                 className={`relative h-full backdrop-blur-sm transition-all duration-500 ${
                   plan.popular
@@ -120,12 +120,12 @@ export function PricingSection({
                     </Badge>
                   </div>
                 )}
-                <CardContent className="p-8">
+                <CardContent className="p-8 h-full flex flex-col">
                   <h3 className="font-[family-name:var(--font-syne)] text-lg font-bold mb-2">
                     {plan.name}
                   </h3>
                   <div className={plan.period ? "mb-1" : "mb-4"}>
-                    <span className="font-[family-name:var(--font-syne)] text-4xl font-black text-honey-text">
+                    <span className="font-[family-name:var(--font-syne)] text-4xl font-black text-honey">
                       {plan.price}
                     </span>
                     {plan.priceSubtext && (
@@ -142,7 +142,7 @@ export function PricingSection({
                   <p className="text-sm text-muted-foreground mb-6">
                     {plan.desc}
                   </p>
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3 mb-8 flex-1">
                     {plan.features.map((f) => (
                       <li
                         key={f}
@@ -164,7 +164,7 @@ export function PricingSection({
                   </ul>
                   <Button
                     asChild
-                    className={`w-full rounded-full font-semibold ${
+                    className={`mt-auto w-full rounded-full font-semibold ${
                       plan.popular
                         ? "bg-honey hover:bg-honey-light text-primary-foreground"
                         : "bg-honey/10 hover:bg-honey/20 text-honey-text border border-honey/30"
