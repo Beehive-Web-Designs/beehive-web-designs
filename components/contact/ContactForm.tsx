@@ -100,11 +100,11 @@ export function ContactForm() {
 
   return (
     <FadeIn delay={0.2}>
-      <div className="rounded-2xl border border-[rgba(245,166,35,0.1)] bg-[#1A1A2E]/60 backdrop-blur-sm p-8 sm:p-10">
+      <div className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-8 sm:p-10">
         <h3 className="font-[family-name:var(--font-syne)] text-2xl font-bold mb-2">
           Send Us a Message
         </h3>
-        <p className="text-sm text-[#8A8A9A] mb-8 font-[family-name:var(--font-space-grotesk)]">
+        <p className="text-sm text-muted-foreground mb-8">
           Fill out the form below and we&apos;ll get back to you within 24 hours.
           No spam, no pressure — just a friendly conversation.
         </p>
@@ -131,7 +131,7 @@ export function ContactForm() {
           {formState.status === "success" && (
             <div className="rounded-xl border border-green-500/30 bg-green-500/10 p-4 flex items-start gap-3">
               <CheckCircle className="h-5 w-5 text-green-400 shrink-0 mt-0.5" />
-              <p className="text-sm text-green-400 font-[family-name:var(--font-space-grotesk)]">
+              <p className="text-sm text-green-400">
                 {formState.message}
               </p>
             </div>
@@ -140,7 +140,7 @@ export function ContactForm() {
           {formState.status === "error" && (
             <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 flex items-start gap-3">
               <AlertCircle className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
-              <p className="text-sm text-red-400 font-[family-name:var(--font-space-grotesk)]">
+              <p className="text-sm text-red-400">
                 {formState.message}
               </p>
             </div>
@@ -150,7 +150,7 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="firstName"
-                className="block text-sm font-medium mb-2 text-[#B0B0C0]"
+                className="block text-sm font-medium mb-2 text-text-label"
               >
                 First Name
               </label>
@@ -162,13 +162,13 @@ export function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="John"
-                className="w-full rounded-xl border border-[rgba(245,166,35,0.15)] bg-[#0F0F1A]/60 px-4 py-3 text-sm text-[#F0EDE6] placeholder:text-[#555] focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors font-[family-name:var(--font-space-grotesk)]"
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-text-placeholder focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors"
               />
             </div>
             <div>
               <label
                 htmlFor="lastName"
-                className="block text-sm font-medium mb-2 text-[#B0B0C0]"
+                className="block text-sm font-medium mb-2 text-text-label"
               >
                 Last Name
               </label>
@@ -180,7 +180,7 @@ export function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="Smith"
-                className="w-full rounded-xl border border-[rgba(245,166,35,0.15)] bg-[#0F0F1A]/60 px-4 py-3 text-sm text-[#F0EDE6] placeholder:text-[#555] focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors font-[family-name:var(--font-space-grotesk)]"
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-text-placeholder focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors"
               />
             </div>
           </div>
@@ -189,7 +189,7 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium mb-2 text-[#B0B0C0]"
+                className="block text-sm font-medium mb-2 text-text-label"
               >
                 Email
               </label>
@@ -201,15 +201,15 @@ export function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="john@example.com"
-                className="w-full rounded-xl border border-[rgba(245,166,35,0.15)] bg-[#0F0F1A]/60 px-4 py-3 text-sm text-[#F0EDE6] placeholder:text-[#555] focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors font-[family-name:var(--font-space-grotesk)]"
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-text-placeholder focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors"
               />
             </div>
             <div>
               <label
                 htmlFor="phone"
-                className="block text-sm font-medium mb-2 text-[#B0B0C0]"
+                className="block text-sm font-medium mb-2 text-text-label"
               >
-                Phone <span className="text-[#555]">(optional)</span>
+                Phone <span className="text-text-placeholder">(optional)</span>
               </label>
               <input
                 id="phone"
@@ -218,7 +218,7 @@ export function ContactForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="(555) 000-0000"
-                className="w-full rounded-xl border border-[rgba(245,166,35,0.15)] bg-[#0F0F1A]/60 px-4 py-3 text-sm text-[#F0EDE6] placeholder:text-[#555] focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors font-[family-name:var(--font-space-grotesk)]"
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-text-placeholder focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors"
               />
             </div>
           </div>
@@ -226,7 +226,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="service"
-              className="block text-sm font-medium mb-2 text-[#B0B0C0]"
+              className="block text-sm font-medium mb-2 text-text-label"
             >
               What service are you interested in?
             </label>
@@ -236,15 +236,15 @@ export function ContactForm() {
               value={formData.service}
               onChange={handleChange}
               required
-              className="w-full rounded-xl border border-[rgba(245,166,35,0.15)] bg-[#0F0F1A]/60 px-4 py-3 text-sm text-[#F0EDE6] focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors font-[family-name:var(--font-space-grotesk)]"
+              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors"
             >
-              <option value="lump-sum" className="bg-[#1A1A2E]">
+              <option value="lump-sum" className="bg-card text-foreground">
                 Lump Sum
               </option>
-              <option value="monthly-subscription" className="bg-[#1A1A2E]">
+              <option value="monthly-subscription" className="bg-card text-foreground">
                 Monthly Subscription
               </option>
-              <option value="other" className="bg-[#1A1A2E]">
+              <option value="other" className="bg-card text-foreground">
                 Custom website
               </option>
             </select>
@@ -252,7 +252,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="message"
-              className="block text-sm font-medium mb-2 text-[#B0B0C0]"
+              className="block text-sm font-medium mb-2 text-text-label"
             >
               Tell us about your project
             </label>
@@ -264,14 +264,14 @@ export function ContactForm() {
               required
               rows={5}
               placeholder="What's your business about? What are your goals for the website? Any specific features or requirements?"
-              className="w-full rounded-xl border border-[rgba(245,166,35,0.15)] bg-[#0F0F1A]/60 px-4 py-3 text-sm text-[#F0EDE6] placeholder:text-[#555] focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors resize-none font-[family-name:var(--font-space-grotesk)]"
+              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-text-placeholder focus:border-honey focus:outline-none focus:ring-1 focus:ring-honey/50 transition-colors resize-none"
             />
           </div>
 
           <Button
             type="submit"
             disabled={formState.status === "submitting"}
-            className="cursor-pointer w-full bg-honey hover:bg-honey-light text-[#0F0F1A] font-bold rounded-full py-6 text-base glow-honey disabled:opacity-50 disabled:cursor-not-allowed"
+            className="cursor-pointer w-full bg-honey hover:bg-honey-light text-primary-foreground font-bold rounded-full py-6 text-base glow-honey disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {formState.status === "submitting" ? (
               "Sending..."
@@ -282,7 +282,7 @@ export function ContactForm() {
             )}
           </Button>
 
-          <p className="text-center text-xs text-[#555] font-[family-name:var(--font-space-grotesk)]">
+          <p className="text-center text-xs text-text-placeholder">
             We respect your privacy. No spam, ever.
           </p>
         </form>

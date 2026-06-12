@@ -10,8 +10,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { NavBar } from "@/components/nav-bar";
-import { Footer } from "@/components/footer";
+import { PageShell } from "@/components/page-shell";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { HoneycombDecor } from "@/components/HoneyCombDecor";
 import { CTABanner } from "@/components/cta-banner";
@@ -61,25 +60,21 @@ const team = [
 
 export function AboutClient() {
   return (
-    <div className="min-h-screen bg-[#0F0F1A] text-[#F0EDE6] overflow-x-hidden">
-      <NavBar />
-
+    <PageShell>
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 honeycomb-bg">
         <HoneycombDecor className="absolute top-20 right-10 w-48 h-48 opacity-40 hidden lg:block" />
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <FadeIn delay={0.1} animateOnMount>
-            <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto">
-              Small Team,
-              <br />
-              <span className="gradient-text">Big Ambitions</span>
-            </h1>
-          </FadeIn>
+          <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto">
+            Small Team,
+            <br />
+            <span className="gradient-text">Big Ambitions</span>
+          </h1>
 
           <FadeIn delay={0.2} animateOnMount>
-            <p className="max-w-2xl text-lg sm:text-xl text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)] mx-auto">
+            <p className="max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed mx-auto">
               We started Beehive Web Designs because we believed small businesses deserve the
               same quality web presence as the big guys — without the big-agency
               price tag or the corporate runaround.
@@ -100,7 +95,7 @@ export function AboutClient() {
                   <br />
                   <span className="gradient-text">Get Small Business</span>
                 </h2>
-                <div className="space-y-4 text-[#8A8A9A] text-base leading-relaxed font-[family-name:var(--font-space-grotesk)]">
+                <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
                   <p>
                     Before Beehive, our founder spent years watching talented
                     small business owners struggle online. They&apos;d pay thousands
@@ -132,13 +127,13 @@ export function AboutClient() {
                 ].map((stat, i) => (
                   <div
                     key={stat.label}
-                    className="p-6 rounded-2xl border border-[rgba(245,166,35,0.1)] bg-[#1A1A2E]/40 hover:border-honey/30 transition-all duration-500 group"
+                    className="p-6 rounded-2xl border border-border bg-card/40 hover:border-honey/30 transition-all duration-500 group"
                   >
                     <stat.icon className="h-6 w-6 text-honey/60 group-hover:text-honey transition-colors mb-3" />
                     <div className="font-[family-name:var(--font-syne)] text-3xl font-black text-honey glow-text">
                       {stat.value}
                     </div>
-                    <div className="text-xs text-[#8A8A9A] mt-1 font-[family-name:var(--font-space-grotesk)]">
+                    <div className="text-xs text-muted-foreground mt-1">
                       {stat.label}
                     </div>
                   </div>
@@ -166,7 +161,7 @@ export function AboutClient() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
-                <Card className="bg-[#1A1A2E]/60 border-[rgba(245,166,35,0.1)] hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
+                <Card className="bg-card/60 border-border hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
                   <CardContent className="p-6 text-center">
                     <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-honey/10 group-hover:bg-honey/20 transition-colors mx-auto">
                       <item.icon className="h-8 w-8 text-honey" />
@@ -174,7 +169,7 @@ export function AboutClient() {
                     <h3 className="font-[family-name:var(--font-syne)] text-xl font-bold mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-base text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)]">
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       {item.desc}
                     </p>
                   </CardContent>
@@ -198,7 +193,7 @@ export function AboutClient() {
                 <br />
                 <span className="gradient-text">Bees</span>
               </h2>
-              <p className="mt-4 text-[#8A8A9A] max-w-xl mx-auto font-[family-name:var(--font-space-grotesk)]">
+              <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
                 Good friends who love to build. We combine our passion for design and
                 development to create websites that make a real difference.
               </p>
@@ -208,7 +203,7 @@ export function AboutClient() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 max-w-3xl gap-6 mx-auto">
             {team.map((member, i) => (
               <FadeIn key={member.id} delay={i * 0.1}>
-                <Card className="bg-[#1A1A2E]/60 border-[rgba(245,166,35,0.1)] hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
+                <Card className="bg-card/60 border-border hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
                   <CardContent className="text-center">
 
                     {/* Avatar */}
@@ -228,7 +223,7 @@ export function AboutClient() {
                     <h3 className="font-[family-name:var(--font-syne)] text-2xl font-bold">
                       {member.name}
                     </h3>
-                    <p className="text-base text-honey mt-3 font-medium font-[family-name:var(--font-space-grotesk)]">
+                    <p className="text-base text-honey-text mt-3 font-medium">
                       {member.role}
                     </p>
                     {member.linkedin && (
@@ -251,8 +246,6 @@ export function AboutClient() {
       </section>
 
       <CTABanner />
-
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

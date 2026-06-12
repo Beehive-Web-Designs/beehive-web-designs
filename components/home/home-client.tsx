@@ -1,7 +1,6 @@
 "use client";
 
-import { NavBar } from "@/components/nav-bar";
-import { Footer } from "@/components/footer";
+import { PageShell } from "@/components/page-shell";
 import { CTABanner } from "@/components/cta-banner";
 import { ProcessSection } from "@/components/process-section";
 import { PricingSection } from "@/components/pricing-section";
@@ -12,8 +11,7 @@ import { HomeTestimonialsSection } from "@/components/home/home-testimonials-sec
 
 export function HomeClient() {
   return (
-    <div className="min-h-screen bg-[#0F0F1A] text-[#F0EDE6] overflow-x-hidden">
-      <NavBar />
+    <PageShell>
       <HomeHero />
       <HomeServicesSection />
       <HomeAboutSection />
@@ -25,7 +23,6 @@ export function HomeClient() {
         hasHoneycombBg={false}
       />
       <CTABanner />
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

@@ -17,9 +17,9 @@ function formatDate(dateString: string): string {
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
-    <Card className="group border-[rgba(245,166,35,0.15)] bg-[#14141F]/80 hover:border-honey/30 transition-colors">
+    <Card className="group border-border bg-card/80 hover:border-honey/30 transition-colors">
       <CardContent className="p-8">
-        <div className="flex flex-wrap items-center gap-4 text-xs text-[#8A8A9A] uppercase tracking-wider mb-4 font-[family-name:var(--font-space-grotesk)]">
+        <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground uppercase tracking-wider mb-4">
           <span className="flex items-center gap-1.5">
             <Calendar className="h-3.5 w-3.5 text-honey" />
             {formatDate(post.publishedAt)}
@@ -30,17 +30,17 @@ export function BlogCard({ post }: BlogCardProps) {
           </span>
         </div>
 
-        <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-[#F0EDE6] mb-4 group-hover:text-honey transition-colors">
+        <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground mb-4 group-hover:text-honey-text transition-colors">
           <Link href={`/blog/${post.slug}`}>{post.title}</Link>
         </h2>
 
-        <p className="text-[#8A8A9A] leading-relaxed mb-6 font-[family-name:var(--font-space-grotesk)]">
+        <p className="text-muted-foreground leading-relaxed mb-6">
           {post.excerpt}
         </p>
 
         <Link
           href={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-2 text-sm font-medium text-honey hover:text-honey-light transition-colors uppercase tracking-wide"
+          className="inline-flex items-center gap-2 text-sm font-medium text-honey-text hover:text-honey-dark transition-colors uppercase tracking-wide"
         >
           Read article <ArrowRight className="h-4 w-4" />
         </Link>

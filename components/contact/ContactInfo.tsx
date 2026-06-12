@@ -48,13 +48,13 @@ export function ContactInfo() {
               <item.icon className="h-5 w-5 text-honey" />
             </div>
             <div>
-              <h4 className="font-[family-name:var(--font-syne)] font-bold text-sm">
+              <h3 className="font-[family-name:var(--font-syne)] font-bold text-sm">
                 {item.title}
-              </h4>
-              <p className="text-honey text-sm font-medium font-[family-name:var(--font-space-grotesk)]">
+              </h3>
+              <p className="text-honey-text text-sm font-medium">
                 {item.value}
               </p>
-              <p className="text-xs text-[#8A8A9A] mt-0.5 font-[family-name:var(--font-space-grotesk)]">
+              <p className="text-xs text-muted-foreground mt-0.5">
                 {item.desc}
               </p>
             </div>

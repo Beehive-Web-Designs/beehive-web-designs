@@ -113,11 +113,12 @@ export function FAQSection() {
             {categories.map((category) => (
               <button
                 key={category.id}
+                type="button"
                 onClick={() => setSelectedCategory(category.id)}
-                className={`cursor-pointer rounded-full border px-6 py-2.5 text-sm font-medium font-[family-name:var(--font-space-grotesk)] transition-all duration-300 ${
+                className={`cursor-pointer rounded-full border px-6 py-2.5 text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category.id
                     ? "border-honey bg-honey/20 text-honey"
-                    : "border-[rgba(245,166,35,0.2)] bg-[#1A1A2E]/40 text-[#B0B0C0] hover:border-honey/40 hover:bg-[#1A1A2E]/60"
+                    : "border-border bg-card/40 text-text-label hover:border-honey/40 hover:bg-card/60"
                 }`}
               >
                 {category.label}
@@ -132,12 +133,12 @@ export function FAQSection() {
               <AccordionItem
                 key={faq.id}
                 value={faq.id}
-                className="rounded-2xl border border-[rgba(245,166,35,0.1)] bg-[#1A1A2E]/60 hover:border-honey/20 transition-all duration-500 backdrop-blur-sm px-6 sm:px-8 last:border-b"
+                className="rounded-2xl border border-border bg-card/60 hover:border-honey/20 transition-all duration-500 backdrop-blur-sm px-6 sm:px-8 last:border-b"
               >
-                <AccordionTrigger className="cursor-pointer font-[family-name:var(--font-syne)] text-base font-bold text-[#F0EDE6] hover:text-honey hover:no-underline py-6 [&[data-state=open]>svg]:text-honey">
+                <AccordionTrigger className="cursor-pointer font-[family-name:var(--font-syne)] text-base font-bold text-foreground hover:text-honey hover:no-underline py-6 [&[data-state=open]>svg]:text-honey">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-sm text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)] pb-6">
+                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-6">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
