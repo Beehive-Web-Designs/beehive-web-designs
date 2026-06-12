@@ -2,18 +2,11 @@ import Link from "next/link";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { BlogPost } from "@/lib/blog/types";
+import { formatBlogDate } from "@/lib/format-blog-date";
 
 type BlogCardProps = {
   post: BlogPost;
 };
-
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
@@ -22,7 +15,7 @@ export function BlogCard({ post }: BlogCardProps) {
         <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground uppercase tracking-wider mb-4">
           <span className="flex items-center gap-1.5">
             <Calendar className="h-3.5 w-3.5 text-honey" />
-            {formatDate(post.publishedAt)}
+            {formatBlogDate(post.publishedAt)}
           </span>
           <span className="flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5 text-honey" />
