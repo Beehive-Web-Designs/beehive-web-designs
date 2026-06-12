@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Syne, DM_Sans } from "next/font/google";
+import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-});
+import { LazyToaster } from "@/components/lazy-toaster";
 
 const syne = Syne({
   subsets: ["latin"],
   variable: "--font-syne",
   display: "swap",
+  weight: ["700", "800"],
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
   display: "swap",
+  weight: ["400", "500"],
+  preload: false,
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -116,13 +115,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${syne.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className="antialiased font-[family-name:var(--font-dm-sans)]">
         {children}
-        <Toaster />
+        <LazyToaster />
       </body>
     </html>
   );

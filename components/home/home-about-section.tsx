@@ -1,10 +1,6 @@
-import { LazyMotion } from "framer-motion";
 import { Hexagon, Phone, Zap, Shield } from "lucide-react";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { RotatingHex } from "@/components/home/rotating-hex";
-
-const loadFeatures = () =>
-  import("framer-motion").then((res) => res.domAnimation);
 
 const highlights = [
   {
@@ -36,7 +32,7 @@ export function HomeAboutSection() {
                 <br />
                 <span className="gradient-text">Working for You</span>
               </h2>
-              <p className="text-[#8A8A9A] text-lg leading-relaxed mb-8 font-[family-name:var(--font-space-grotesk)]">
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                 We&apos;re not a massive agency that treats you like a number.
                 Beehive Web Designs is a focused team that partners closely with
                 small businesses to deliver websites that actually drive growth.
@@ -50,10 +46,10 @@ export function HomeAboutSection() {
                       <item.icon className="h-5 w-5 text-honey" />
                     </div>
                     <div>
-                      <h4 className="font-[family-name:var(--font-syne)] font-bold text-base mb-1">
+                      <h3 className="font-[family-name:var(--font-syne)] font-bold text-base mb-1">
                         {item.title}
-                      </h4>
-                      <p className="text-sm text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)]">
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -66,38 +62,36 @@ export function HomeAboutSection() {
           <FadeIn delay={0.2}>
             <div className="relative">
               <div className="aspect-square max-w-md mx-auto relative">
-                <LazyMotion features={loadFeatures}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative w-full h-full">
-                      <RotatingHex
-                        rotation={360}
-                        duration={60}
-                        className="absolute inset-8"
-                      >
-                        <Hexagon className="w-full h-full text-honey/10 stroke-[0.5]" />
-                      </RotatingHex>
-                      <RotatingHex
-                        rotation={-360}
-                        duration={90}
-                        className="absolute inset-16"
-                      >
-                        <Hexagon className="w-full h-full text-honey/20 stroke-[0.5]" />
-                      </RotatingHex>
-                      <RotatingHex
-                        rotation={360}
-                        duration={45}
-                        className="absolute inset-24"
-                      >
-                        <Hexagon className="w-full h-full text-honey/30 stroke-[0.5]" />
-                      </RotatingHex>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 rounded-3xl bg-honey/10 flex items-center justify-center glow-honey">
-                          <Hexagon className="w-12 h-12 text-honey fill-honey/20" />
-                        </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-full h-full">
+                    <RotatingHex
+                      rotation={360}
+                      duration={60}
+                      className="absolute inset-8"
+                    >
+                      <Hexagon className="w-full h-full text-honey/10 stroke-[0.5]" />
+                    </RotatingHex>
+                    <RotatingHex
+                      rotation={-360}
+                      duration={90}
+                      className="absolute inset-16"
+                    >
+                      <Hexagon className="w-full h-full text-honey/20 stroke-[0.5]" />
+                    </RotatingHex>
+                    <RotatingHex
+                      rotation={360}
+                      duration={45}
+                      className="absolute inset-24"
+                    >
+                      <Hexagon className="w-full h-full text-honey/30 stroke-[0.5]" />
+                    </RotatingHex>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-24 h-24 rounded-3xl bg-honey/10 flex items-center justify-center glow-honey">
+                        <Hexagon className="w-12 h-12 text-honey fill-honey/20" />
                       </div>
                     </div>
                   </div>
-                </LazyMotion>
+                </div>
               </div>
             </div>
           </FadeIn>

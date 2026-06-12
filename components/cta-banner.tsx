@@ -17,14 +17,14 @@ export function CTABanner() {
             <br />
             <span className="gradient-text">Your Website?</span>
           </h2>
-          <p className="text-[#8A8A9A] text-lg max-w-2xl mx-auto mb-8 font-[family-name:var(--font-space-grotesk)]">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
             Let&apos;s build something amazing together. Get in touch for a free
             consultation and see how we can help bring your vision to life.
           </p>
           <Button
             asChild
             size="lg"
-            className="bg-honey hover:bg-honey-light text-[#0F0F1A] font-bold rounded-full px-10 py-6 text-base glow-honey"
+            className="bg-honey hover:bg-honey-light text-primary-foreground font-bold rounded-full px-10 py-6 text-base glow-honey"
           >
             <Link href="/#contact">
               Get Started <ArrowRight className="ml-2 h-5 w-5" />

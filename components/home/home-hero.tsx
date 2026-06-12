@@ -16,21 +16,19 @@ export function HomeHero() {
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-nectar/5 blur-[100px] pointer-events-none" />
       <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
         <FadeIn animateOnMount>
-          <Badge className="mb-6 rounded-full border-honey/30 bg-honey/10 text-honey px-4 py-1.5 text-xs font-medium tracking-widest uppercase">
+          <Badge className="mb-6 rounded-full border-honey/30 bg-honey/10 text-honey-text px-4 py-1.5 text-xs font-medium tracking-widest uppercase">
             Web Design &bull; Hosting & Maintenance &bull; SEO
           </Badge>
         </FadeIn>
 
-        <FadeIn delay={0.1} animateOnMount>
-          <h1 className="font-[family-name:var(--font-syne)] max-w-[800px] mx-auto text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-0.95 tracking-tight mb-6">
-            Websites That Work
-            <br />
-            <span className="gradient-text">As Hard As You Do</span>
-          </h1>
-        </FadeIn>
+        <h1 className="font-[family-name:var(--font-syne)] max-w-[800px] mx-auto text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-0.95 tracking-tight mb-6">
+          Websites That Work
+          <br />
+          <span className="gradient-text">As Hard As You Do</span>
+        </h1>
 
         <FadeIn delay={0.2} animateOnMount>
-          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-[#8A8A9A] leading-relaxed mb-10 font-[family-name:var(--font-space-grotesk)]">
+          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10">
             Beautiful websites built from scratch. We build, host, and optimize
             websites that bring real customers to your door. Small business is our
             specialty.
@@ -42,7 +40,7 @@ export function HomeHero() {
             <Button
               asChild
               size="lg"
-              className="bg-honey hover:bg-honey-light text-[#0F0F1A] font-bold rounded-full px-8 py-6 text-base glow-honey"
+              className="bg-honey hover:bg-honey-light text-primary-foreground font-bold rounded-full px-8 py-6 text-base glow-honey"
             >
               <Link href="/contact">
                 Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
@@ -52,7 +50,7 @@ export function HomeHero() {
               asChild
               variant="outline"
               size="lg"
-              className="rounded-full px-8 py-6 text-base border-honey/30 text-honey hover:bg-honey/10 hover:text-honey font-medium"
+              className="rounded-full px-8 py-6 text-base border-honey/30 text-honey-text hover:bg-honey/10 hover:text-honey-text font-medium"
             >
               <Link href="/services">See What We Do</Link>
             </Button>

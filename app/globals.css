@@ -37,6 +37,9 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-text-label: var(--text-label);
+  --color-text-placeholder: var(--text-placeholder);
+  --color-surface-footer: var(--surface-footer);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -44,44 +47,48 @@
   --color-honey: #F5A623;
   --color-honey-light: #FFC857;
   --color-honey-dark: #D48B0A;
+  --color-honey-text: #876104;
   --color-comb: #1A1A2E;
-  --color-comb-light: #16213E;
+  --color-comb-light: #EDE9E0;
   --color-nectar: #E94560;
   --color-pollen: #FFE66D;
 }
 
 :root {
   --radius: 0.625rem;
-  --background: #0F0F1A;
-  --foreground: #F0EDE6;
-  --card: #1A1A2E;
-  --card-foreground: #F0EDE6;
-  --popover: #1A1A2E;
-  --popover-foreground: #F0EDE6;
+  --background: #FAF8F4;
+  --foreground: #1A1A2E;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A2E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A2E;
   --primary: #F5A623;
-  --primary-foreground: #0F0F1A;
-  --secondary: #16213E;
-  --secondary-foreground: #F0EDE6;
-  --muted: #16213E;
-  --muted-foreground: #8A8A9A;
+  --primary-foreground: #1A1A2E;
+  --secondary: #F0EDE6;
+  --secondary-foreground: #1A1A2E;
+  --muted: #F0EDE6;
+  --muted-foreground: #5C5C6E;
   --accent: #E94560;
-  --accent-foreground: #F0EDE6;
+  --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(245, 166, 35, 0.15);
-  --input: rgba(245, 166, 35, 0.15);
+  --border: rgba(26, 26, 46, 0.10);
+  --input: rgba(26, 26, 46, 0.08);
   --ring: #F5A623;
+  --text-label: #4A4A5C;
+  --text-placeholder: #6B6B7D;
+  --surface-footer: #EDE9E0;
   --chart-1: #F5A623;
   --chart-2: #E94560;
   --chart-3: #FFC857;
   --chart-4: #FFE66D;
   --chart-5: #D48B0A;
-  --sidebar: #1A1A2E;
-  --sidebar-foreground: #F0EDE6;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1A1A2E;
   --sidebar-primary: #F5A623;
-  --sidebar-primary-foreground: #0F0F1A;
-  --sidebar-accent: #16213E;
-  --sidebar-accent-foreground: #F0EDE6;
-  --sidebar-border: rgba(245, 166, 35, 0.15);
+  --sidebar-primary-foreground: #1A1A2E;
+  --sidebar-accent: #F0EDE6;
+  --sidebar-accent-foreground: #1A1A2E;
+  --sidebar-border: rgba(26, 26, 46, 0.10);
   --sidebar-ring: #F5A623;
 }
 
@@ -99,7 +106,7 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0F0F1A;
+  background: #FAF8F4;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(245, 166, 35, 0.3);
@@ -111,16 +118,16 @@
 
 /* Honeycomb pattern background */
 .honeycomb-bg {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='rgba(245,166,35,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='rgba(245,166,35,0.10)' stroke-width='1'/%3E%3C/svg%3E");
 }
 
 /* Glow effects */
 .glow-honey {
-  box-shadow: 0 0 20px rgba(245, 166, 35, 0.15), 0 0 60px rgba(245, 166, 35, 0.05);
+  box-shadow: 0 0 20px rgba(245, 166, 35, 0.10), 0 0 60px rgba(245, 166, 35, 0.03);
 }
 
 .glow-text {
-  text-shadow: 0 0 40px rgba(245, 166, 35, 0.3);
+  text-shadow: 0 0 40px rgba(245, 166, 35, 0.15);
 }
 
 /* Gradient text helper */
@@ -134,4 +141,52 @@
 /* Smooth section transitions */
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes mobile-menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-enter {
+  animation: mobile-menu-enter 0.2s ease-out both;
+}
+
+@keyframes hex-rotate {
+  to {
+    transform: rotate(var(--rotate-to, 360deg));
+  }
+}
+
+.rotating-hex {
+  animation: hex-rotate linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up,
+  .mobile-menu-enter,
+  .rotating-hex {
+    animation: none;
+  }
 }

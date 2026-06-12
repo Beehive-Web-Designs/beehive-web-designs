@@ -45,7 +45,7 @@ export function HomeTestimonialsSection() {
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <FadeIn key={t.name} delay={i * 0.1}>
-              <Card className="bg-[#1A1A2E]/60 border-[rgba(245,166,35,0.1)] hover:border-honey/20 transition-all duration-500 h-full backdrop-blur-sm">
+              <Card className="bg-card/60 border-border hover:border-honey/20 transition-all duration-500 h-full backdrop-blur-sm">
                 <CardContent className="p-8">
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: t.rating }).map((_, si) => (
@@ -55,14 +55,14 @@ export function HomeTestimonialsSection() {
                       />
                     ))}
                   </div>
-                  <p className="text-[#B0B0C0] leading-relaxed mb-6 italic text-sm font-[family-name:var(--font-space-grotesk)]">
+                  <p className="text-text-label leading-relaxed mb-6 italic text-sm">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <div>
                     <div className="font-[family-name:var(--font-syne)] font-bold text-sm">
                       {t.name}
                     </div>
-                    <div className="text-xs text-[#8A8A9A]">{t.role}</div>
+                    <div className="text-xs text-muted-foreground">{t.role}</div>
                   </div>
                 </CardContent>
               </Card>

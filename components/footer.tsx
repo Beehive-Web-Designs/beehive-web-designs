@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Hexagon } from "lucide-react";
+import { CopyrightYear } from "@/components/copyright-year";
 
 export function Footer() {
   return (
-    <footer className="border-t border-[rgba(245,166,35,0.1)] bg-[#0A0A14]">
+    <footer className="border-t border-border bg-surface-footer">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
@@ -14,7 +15,7 @@ export function Footer() {
                 Beehive Web Designs
               </span>
             </Link>
-            <p className="text-sm text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)]">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Building beautiful, high-performing websites for small businesses
               that want to grow.
             </p>
@@ -22,9 +23,9 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-[#B0B0C0] mb-4">
+            <h2 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-text-label mb-4">
               Services
-            </h4>
+            </h2>
             <ul className="space-y-2">
               {[
                 { label: "Web Design", href: "/services#web-design" },
@@ -35,7 +36,7 @@ export function Footer() {
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="text-sm text-[#8A8A9A] hover:text-honey transition-colors font-[family-name:var(--font-space-grotesk)]"
+                    className="text-sm text-muted-foreground hover:text-honey transition-colors"
                   >
                     {s.label}
                   </Link>
@@ -46,9 +47,9 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-[#B0B0C0] mb-4">
+            <h2 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-text-label mb-4">
               Company
-            </h4>
+            </h2>
             <ul className="space-y-2">
               {[
                 { label: "About", href: "/about" },
@@ -59,7 +60,7 @@ export function Footer() {
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="text-sm text-[#8A8A9A] hover:text-honey transition-colors font-[family-name:var(--font-space-grotesk)]"
+                    className="text-sm text-muted-foreground hover:text-honey transition-colors"
                   >
                     {s.label}
                   </Link>
@@ -70,23 +71,23 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-[#B0B0C0] mb-4">
+            <h2 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-text-label mb-4">
               Contact
-            </h4>
+            </h2>
             <ul className="space-y-2">
-              <li className="text-sm text-[#8A8A9A] font-[family-name:var(--font-space-grotesk)]">
+              <li className="text-sm text-muted-foreground">
                 spencer.s.hodson@gmail.com
               </li>
-              <li className="text-sm text-[#8A8A9A] font-[family-name:var(--font-space-grotesk)]">
+              <li className="text-sm text-muted-foreground">
               (949) 709-9241
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-[rgba(245,166,35,0.08)] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[#555] font-[family-name:var(--font-space-grotesk)]">
-            &copy; {new Date().getFullYear()} Beehive Web Designs. All rights
+        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">
+            &copy; <CopyrightYear /> Beehive Web Designs. All rights
             reserved.
           </p>
           <div className="flex gap-6">
@@ -94,7 +95,7 @@ export function Footer() {
               <Link
                 key={link}
                 href="/"
-                className="text-xs text-[#555] hover:text-honey transition-colors font-[family-name:var(--font-space-grotesk)]"
+                className="text-xs text-muted-foreground hover:text-honey-text transition-colors"
               >
                 {link}
               </Link>

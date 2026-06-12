@@ -88,7 +88,7 @@ export function PricingSection({
         <FadeIn>
           <div className="text-center mb-16">
             {showBadge && (
-              <Badge className="mb-4 rounded-full border-honey/30 bg-honey/10 text-honey px-4 py-1.5 text-xs tracking-widest uppercase">
+              <Badge className="mb-4 rounded-full border-honey/30 bg-honey/10 text-honey-text px-4 py-1.5 text-xs tracking-widest uppercase">
                 Pricing
               </Badge>
             )}
@@ -97,7 +97,7 @@ export function PricingSection({
               <br />
               <span className="gradient-text">Pricing</span>
             </h2>
-            <p className="mt-4 text-[#8A8A9A] max-w-xl mx-auto font-[family-name:var(--font-space-grotesk)]">
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
               No hidden fees. No surprises. Just honest pricing for honest work.
             </p>
           </div>
@@ -109,13 +109,13 @@ export function PricingSection({
               <Card
                 className={`relative h-full backdrop-blur-sm transition-all duration-500 ${
                   plan.popular
-                    ? "bg-[#1A1A2E]/80 border-honey/40 glow-honey"
-                    : "bg-[#1A1A2E]/40 border-[rgba(245,166,35,0.1)] hover:border-honey/20"
+                    ? "bg-card/80 border-honey/40 glow-honey"
+                    : "bg-card/40 border-border hover:border-honey/20"
                 }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-honey text-[#0F0F1A] font-bold px-4 py-1 rounded-full text-xs">
+                    <Badge className="bg-honey text-primary-foreground font-bold px-4 py-1 rounded-full text-xs">
                       Most Popular
                     </Badge>
                   </div>
@@ -125,28 +125,28 @@ export function PricingSection({
                     {plan.name}
                   </h3>
                   <div className={plan.period ? "mb-1" : "mb-4"}>
-                    <span className="font-[family-name:var(--font-syne)] text-4xl font-black text-honey">
+                    <span className="font-[family-name:var(--font-syne)] text-4xl font-black text-honey-text">
                       {plan.price}
                     </span>
                     {plan.priceSubtext && (
-                      <span className="font-[family-name:var(--font-syne)] text-xl text-[#8A8A9A] ml-1">
+                      <span className="font-[family-name:var(--font-syne)] text-xl text-muted-foreground ml-1">
                         {plan.priceSubtext}
                       </span>
                     )}
                   </div>
                   {plan.period && (
-                    <p className="text-xs text-[#8A8A9A] mb-5 font-[family-name:var(--font-space-grotesk)]">
+                    <p className="text-xs text-muted-foreground mb-5">
                       {plan.period}
                     </p>
                   )}
-                  <p className="text-sm text-[#8A8A9A] mb-6 font-[family-name:var(--font-space-grotesk)]">
+                  <p className="text-sm text-muted-foreground mb-6">
                     {plan.desc}
                   </p>
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((f) => (
                       <li
                         key={f}
-                        className="flex items-center gap-2 text-sm text-[#B0B0C0]"
+                        className="flex items-center gap-2 text-sm text-text-label"
                       >
                         <CheckCircle2 className="h-4 w-4 text-honey shrink-0" />
                         {f}
@@ -155,9 +155,9 @@ export function PricingSection({
                     {plan.negativeFeatures?.map((f) => (
                       <li
                         key={f}
-                        className="flex items-center gap-2 text-sm text-[#666]"
+                        className="flex items-center gap-2 text-sm text-text-placeholder"
                       >
-                        <XCircle className="h-4 w-4 text-[#666] shrink-0" />
+                        <XCircle className="h-4 w-4 text-text-placeholder shrink-0" />
                         {f}
                       </li>
                     ))}
@@ -166,8 +166,8 @@ export function PricingSection({
                     asChild
                     className={`w-full rounded-full font-semibold ${
                       plan.popular
-                        ? "bg-honey hover:bg-honey-light text-[#0F0F1A]"
-                        : "bg-honey/10 hover:bg-honey/20 text-honey border border-honey/30"
+                        ? "bg-honey hover:bg-honey-light text-primary-foreground"
+                        : "bg-honey/10 hover:bg-honey/20 text-honey-text border border-honey/30"
                     }`}
                   >
                     {buttonHref.startsWith("#") ? (
@@ -184,7 +184,7 @@ export function PricingSection({
 
         {customMessage && (
           <FadeIn delay={0.3}>
-            <p className="text-center text-sm text-[#8A8A9A] mt-10 font-[family-name:var(--font-space-grotesk)]">
+            <p className="text-center text-sm text-muted-foreground mt-10">
               {customMessage}
             </p>
           </FadeIn>

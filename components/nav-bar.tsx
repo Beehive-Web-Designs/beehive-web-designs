@@ -3,12 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LazyMotion, m, useReducedMotion } from "framer-motion";
 import { Hexagon, ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const loadFeatures = () =>
-  import("framer-motion").then((res) => res.domAnimation);
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -28,10 +24,8 @@ function isNavLinkActive(pathname: string, href: string): boolean {
 export function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const shouldReduceMotion = useReducedMotion();
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(245,166,35,0.1)] bg-[#0F0F1A]/80 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
@@ -50,7 +44,7 @@ export function NavBar() {
               className={`text-sm font-medium transition-colors tracking-wide uppercase ${
                 isNavLinkActive(pathname, item.href)
                   ? "text-honey"
-                  : "text-[#8A8A9A] hover:text-honey"
+                  : "text-muted-foreground hover:text-honey"
               }`}
             >
               {item.label}
@@ -62,7 +56,7 @@ export function NavBar() {
         <div className="hidden md:block">
           <Button
             asChild
-            className="bg-honey hover:bg-honey-light text-[#0F0F1A] font-semibold rounded-full px-6"
+            className="bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full px-6"
           >
             <Link href="/contact">
               Get a Free Quote <ArrowRight className="ml-2 h-4 w-4" />
@@ -72,8 +66,9 @@ export function NavBar() {
 
         {/* Mobile toggle */}
         <button
+          type="button"
           aria-label="Toggle mobile menu"
-          className="md:hidden text-[#F0EDE6]"
+          className="md:hidden text-foreground"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -86,12 +81,7 @@ export function NavBar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <LazyMotion features={loadFeatures}>
-          <m.div
-            initial={shouldReduceMotion ? false : { opacity: 0, height: 0 }}
-            animate={shouldReduceMotion ? false : { opacity: 1, height: "auto" }}
-            className="md:hidden border-t border-[rgba(245,166,35,0.1)] bg-[#0F0F1A]/95 backdrop-blur-xl"
-          >
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl mobile-menu-enter">
           <div className="flex flex-col gap-4 p-6">
             {navLinks.map((item) => (
               <Link
@@ -100,7 +90,7 @@ export function NavBar() {
                 className={`text-sm font-medium transition-colors uppercase tracking-wide ${
                   isNavLinkActive(pathname, item.href)
                     ? "text-honey"
-                    : "text-[#8A8A9A] hover:text-honey"
+                    : "text-muted-foreground hover:text-honey"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -109,15 +99,14 @@ export function NavBar() {
             ))}
             <Button
               asChild
-              className="mt-2 bg-honey hover:bg-honey-light text-[#0F0F1A] font-semibold rounded-full"
+              className="mt-2 bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full"
             >
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
                 Get a Free Quote
               </Link>
             </Button>
           </div>
-        </m.div>
-        </LazyMotion>
+        </div>
       )}
     </nav>
   );

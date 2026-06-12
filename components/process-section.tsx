@@ -48,14 +48,14 @@ export function ProcessSection({ hasHoneycombBg = false }: ProcessSectionProps) 
           {processSteps.map((item, i) => (
             <FadeIn key={item.step} delay={i * 0.1}>
               <div className="relative group">
-                <div className="p-8 rounded-2xl border border-[rgba(245,166,35,0.1)] bg-[#1A1A2E]/40 hover:border-honey/30 transition-all duration-500 h-full">
+                <div className="p-8 rounded-2xl border border-border bg-card/40 hover:border-honey/30 transition-all duration-500 h-full">
                   <span className="font-[family-name:var(--font-syne)] text-5xl font-black text-honey/15 group-hover:text-honey/25 transition-colors">
                     {item.step}
                   </span>
                   <h3 className="font-[family-name:var(--font-syne)] text-xl font-bold mt-4 mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)]">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.desc}
                   </p>
                 </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { m, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export function RotatingHex({
   rotation,
@@ -13,19 +13,29 @@ export function RotatingHex({
   className: string;
   children: React.ReactNode;
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  if (shouldReduceMotion) {
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  if (prefersReducedMotion) {
     return <div className={className}>{children}</div>;
   }
 
   return (
-    <m.div
-      animate={{ rotate: rotation }}
-      transition={{ duration, repeat: Infinity, ease: "linear" }}
-      className={className}
+    <div
+      className={`${className} rotating-hex`}
+      style={{
+        animationDuration: `${duration}s`,
+        ["--rotate-to" as string]: `${rotation}deg`,
+      }}
     >
       {children}
-    </m.div>
+    </div>
   );
 }

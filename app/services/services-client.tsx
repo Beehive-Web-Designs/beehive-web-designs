@@ -19,8 +19,7 @@ import {
   Target,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { NavBar } from "@/components/nav-bar";
-import { Footer } from "@/components/footer";
+import { PageShell } from "@/components/page-shell";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { HoneycombDecor } from "@/components/HoneyCombDecor";
 import { PricingSection } from "@/components/pricing-section";
@@ -77,25 +76,21 @@ const services = [
 
 export function ServicesClient() {
   return (
-    <div className="min-h-screen bg-[#0F0F1A] text-[#F0EDE6] overflow-x-hidden">
-      <NavBar />
-
+    <PageShell>
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 honeycomb-bg">
         <HoneycombDecor className="absolute top-20 right-10 w-48 h-48 opacity-40 hidden lg:block" />
         <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <FadeIn delay={0.1} animateOnMount>
-            <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-3xl mx-auto">
-              Your Complete
-              <br />
-              <span className="gradient-text">Website Solution</span>
-            </h1>
-          </FadeIn>
+          <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-3xl mx-auto">
+            Your Complete
+            <br />
+            <span className="gradient-text">Website Solution</span>
+          </h1>
 
           <FadeIn delay={0.2} animateOnMount>
-            <p className="max-w-2xl text-lg sm:text-xl text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)] mx-auto">
+            <p className="max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed mx-auto">
               Stop juggling multiple vendors. Beehive handles your entire web
               presence — from design and development to hosting and SEO — so
               you can focus on running your business.
@@ -109,7 +104,7 @@ export function ServicesClient() {
                 <Link
                   key={s.id}
                   href={`#${s.id}`}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-honey/20 bg-honey/5 hover:bg-honey/10 hover:border-honey/40 transition-all text-sm text-honey font-medium font-[family-name:var(--font-space-grotesk)]"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-honey/20 bg-honey/5 hover:bg-honey/10 hover:border-honey/40 transition-all text-sm text-honey-text font-medium"
                 >
                   <s.icon className="h-4 w-4" />
                   {s.title}
@@ -142,15 +137,15 @@ export function ServicesClient() {
                   <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight mb-3">
                     {service.title}
                   </h2>
-                  <p className="text-honey text-sm font-medium font-[family-name:var(--font-space-grotesk)] uppercase tracking-wider mb-6">
+                  <p className="text-honey-text text-sm font-medium uppercase tracking-wider mb-6">
                     {service.subtitle}
                   </p>
-                  <p className="text-[#8A8A9A] text-base leading-relaxed font-[family-name:var(--font-space-grotesk)] mb-8">
+                  <p className="text-muted-foreground text-base leading-relaxed mb-8">
                     {service.desc}
                   </p>
                   <Button
                     asChild
-                    className="bg-honey hover:bg-honey-light text-[#0F0F1A] font-semibold rounded-full px-8"
+                    className="bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full px-8"
                   >
                     <Link href="/contact">
                       Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
@@ -165,13 +160,13 @@ export function ServicesClient() {
                   {service.features.map((feat) => (
                     <div
                       key={feat.label}
-                      className="p-5 rounded-2xl border border-[rgba(245,166,35,0.1)] bg-[#1A1A2E]/40 hover:border-honey/25 transition-all duration-500 group"
+                      className="p-5 rounded-2xl border border-border bg-card/40 hover:border-honey/25 transition-all duration-500 group"
                     >
                       <feat.icon className="h-5 w-5 text-honey/70 group-hover:text-honey transition-colors mb-3" />
-                      <h4 className="font-[family-name:var(--font-syne)] text-sm font-bold mb-1">
+                      <h3 className="font-[family-name:var(--font-syne)] text-sm font-bold mb-1">
                         {feat.label}
-                      </h4>
-                      <p className="text-xs text-[#8A8A9A] leading-relaxed font-[family-name:var(--font-space-grotesk)]">
+                      </h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
                         {feat.desc}
                       </p>
                     </div>
@@ -192,8 +187,6 @@ export function ServicesClient() {
 
       {/* ─── CTA BANNER ─── */}
       <CTABanner />
-
-      <Footer />
-    </div>
+    </PageShell>
   );
 }
