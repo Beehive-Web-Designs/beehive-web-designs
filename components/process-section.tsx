@@ -44,10 +44,10 @@ export function ProcessSection({ hasHoneycombBg = false }: ProcessSectionProps) 
           </div>
         </FadeIn>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {processSteps.map((item, i) => (
-            <FadeIn key={item.step} delay={i * 0.1}>
-              <div className="relative group">
+            <FadeIn key={item.step} delay={i * 0.1} className="h-full">
+              <div className="relative group h-full">
                 <div className="p-8 rounded-2xl border border-border bg-card/40 hover:border-honey/30 transition-all duration-500 h-full">
                   <span className="font-[family-name:var(--font-syne)] text-5xl font-black text-honey/15 group-hover:text-honey/25 transition-colors">
                     {item.step}

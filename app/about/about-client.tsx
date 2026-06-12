@@ -183,7 +183,7 @@ export function AboutClient() {
       <ProcessSection hasHoneycombBg={true} />
 
       {/* ─── TEAM ─── */}
-      <section className="py-28 relative">
+      {/* <section className="py-28 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/[0.02] to-transparent pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           <FadeIn>
@@ -200,13 +200,11 @@ export function AboutClient() {
             </div>
           </FadeIn>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 max-w-3xl gap-6 mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 max-w-3xl gap-6 mx-auto items-stretch">
             {team.map((member, i) => (
-              <FadeIn key={member.id} delay={i * 0.1}>
+              <FadeIn key={member.id} delay={i * 0.1} className="h-full">
                 <Card className="bg-card/60 border-border hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
-                  <CardContent className="text-center">
-
-                    {/* Avatar */}
+                  <CardContent className="text-center h-full flex flex-col">
                     <div className="mx-auto mb-8 w-40 h-40 rounded-full bg-honey/10 border border-honey/20 flex items-center justify-center group-hover:bg-honey/20 transition-colors overflow-hidden">
                       {member.image ? (
                         <Image
@@ -226,16 +224,18 @@ export function AboutClient() {
                     <p className="text-base text-honey-text mt-3 font-medium">
                       {member.role}
                     </p>
-                    {member.linkedin && (
+                    {member.linkedin ? (
                       <a
                         href={member.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-honey/10 hover:bg-honey/20 border border-honey/20 hover:border-honey/40 transition-all duration-300 mt-6 group/linkedin"
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-honey/10 hover:bg-honey/20 border border-honey/20 hover:border-honey/40 transition-all duration-300 mt-6 mx-auto group/linkedin"
                         aria-label={`${member.name}'s LinkedIn profile`}
                       >
                         <Linkedin className="h-5 w-5 text-honey group-hover/linkedin:scale-110 transition-transform" />
                       </a>
+                    ) : (
+                      <div className="mt-6 h-10" aria-hidden="true" />
                     )}
                   </CardContent>
                 </Card>
@@ -243,7 +243,7 @@ export function AboutClient() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <CTABanner />
     </PageShell>
