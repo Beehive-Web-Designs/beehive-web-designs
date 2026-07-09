@@ -1,35 +1,44 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { HoneycombDecor } from "@/components/HoneyCombDecor";
+import { BeeMark } from "@/components/bee-logo";
 import Link from "next/link";
 
 export function CTABanner() {
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-honey/10 via-honey/5 to-nectar/10 pointer-events-none" />
-      <HoneycombDecor className="absolute -left-10 top-0 w-40 h-40 opacity-20" />
-      <HoneycombDecor className="absolute -right-10 bottom-0 w-48 h-48 opacity-20" />
-      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+    <section className="py-20">
+      <div className="mx-auto max-w-7xl px-6">
         <FadeIn>
-          <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-            Ready to Build
-            <br />
-            <span className="gradient-text">Your Website?</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            Let&apos;s build something amazing together. Get in touch for a free
-            consultation and see how we can help bring your vision to life.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-honey hover:bg-honey-light text-primary-foreground font-bold rounded-full px-10 py-6 text-base glow-honey"
-          >
-            <Link href="/#contact">
-              Get Started <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+          <div className="rounded-3xl bg-honey px-6 py-16 sm:px-16 text-center">
+            <BeeMark className="mx-auto mb-6 h-14 w-14 text-white" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-espresso mb-4">
+              Ready to build a website
+              <br />
+              that works?
+            </h2>
+            <p className="text-espresso/80 max-w-xl mx-auto mb-8">
+              Get in touch for a free consultation. Let&apos;s turn your
+              visitors into customers.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button
+                asChild
+                size="lg"
+                className="bg-espresso hover:bg-espresso-light text-background font-semibold rounded-full px-8"
+              >
+                <Link href="/contact">
+                  Get started <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                className="bg-honey-light/60 hover:bg-honey-light text-espresso font-semibold rounded-full px-8"
+              >
+                <a href="tel:+19497099241">(949) 709-9241</a>
+              </Button>
+            </div>
+          </div>
         </FadeIn>
       </div>
     </section>

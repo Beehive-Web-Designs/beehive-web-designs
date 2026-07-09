@@ -2,6 +2,28 @@ import type { BlogPost } from "./types";
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "how-much-does-a-website-cost-utah",
+    title:
+      "How Much Does a Small Business Website Cost in Utah? (2026 Pricing Guide)",
+    description:
+      "Wondering what a website costs in Utah? Compare DIY vs custom pricing, hidden fees, lump sum vs monthly plans, and what Utah small businesses should budget in 2026.",
+    excerpt:
+      "Utah web design quotes range from a few hundred dollars to tens of thousands. Here is what drives the price, what to budget, and how to avoid paying for a site that never generates leads.",
+    publishedAt: "2026-07-09",
+    readTime: "9 min read",
+    author: "Spencer Hodson",
+    keywords: [
+      "website cost Utah",
+      "how much does a website cost",
+      "small business website price",
+      "web design pricing Utah",
+      "affordable website Utah",
+      "custom website cost",
+      "Salt Lake City web design cost",
+      "Utah web designer pricing",
+    ],
+  },
+  {
     slug: "utah-small-business-bad-websites",
     title:
       "Why Small Businesses in Utah Lose Customers With Bad Websites (and How to Fix It)",

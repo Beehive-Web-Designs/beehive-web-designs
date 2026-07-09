@@ -7,6 +7,7 @@ import { PricingSection } from "@/components/pricing-section";
 import { HomeHero } from "@/components/home/home-hero";
 import { HomeServicesSection } from "@/components/home/home-services-section";
 import { HomeAboutSection } from "@/components/home/home-about-section";
+import { HomeWorkSection } from "@/components/home/home-work-section";
 import { HomeTestimonialsSection } from "@/components/home/home-testimonials-section";
 
 export function HomeClient() {
@@ -15,13 +16,10 @@ export function HomeClient() {
       <HomeHero />
       <HomeServicesSection />
       <HomeAboutSection />
-      <ProcessSection hasHoneycombBg={false} />
+      {/* <ProcessSection /> */}
+      <HomeWorkSection />
       <HomeTestimonialsSection />
-      <PricingSection
-        showBadge={false}
-        buttonHref="#contact"
-        hasHoneycombBg={false}
-      />
+      <PricingSection />
       <CTABanner />
     </PageShell>
   );

@@ -1,23 +1,15 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { LazyToaster } from "@/components/lazy-toaster";
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-syne",
-  display: "swap",
-  weight: ["700", "800"],
-  preload: true,
-  adjustFontFallback: true,
-});
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
   display: "swap",
-  weight: ["400", "500"],
-  preload: false,
+  weight: ["400", "500", "700", "800"],
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -115,9 +107,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
+    <html lang="en" className={dmSans.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className="antialiased font-[family-name:var(--font-dm-sans)]">
         {children}

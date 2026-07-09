@@ -24,7 +24,7 @@ export function UtahBadWebsitesContent() {
         a sales tool.
       </p>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         Your Website Is Your{" "}
         <span className="text-honey-text">Digital Storefront</span>
       </h2>
@@ -44,7 +44,7 @@ export function UtahBadWebsitesContent() {
         lead, so you never know you lost it.
       </p>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         1. Slow or Broken on Mobile
       </h2>
 
@@ -65,7 +65,7 @@ export function UtahBadWebsitesContent() {
         it is the baseline.
       </p>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         2. Outdated Design and Missing Trust Signals
       </h2>
 
@@ -85,7 +85,7 @@ export function UtahBadWebsitesContent() {
         Update your copyright year. Small trust signals add up fast.
       </p>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         3. Invisible on Google (Local SEO)
       </h2>
 
@@ -107,7 +107,7 @@ export function UtahBadWebsitesContent() {
         SEO is a system, not a single checkbox.
       </p>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         4. Confusing Navigation and Weak CTAs
       </h2>
 
@@ -126,7 +126,7 @@ export function UtahBadWebsitesContent() {
         what you do, who it is for, and how to start.
       </p>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         5. Broken Forms and Contact Friction
       </h2>
 
@@ -146,7 +146,7 @@ export function UtahBadWebsitesContent() {
         other improvements.
       </p>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         6. No Analytics — Flying Blind
       </h2>
 
@@ -166,7 +166,7 @@ export function UtahBadWebsitesContent() {
 
       {/* Mid-article CTA */}
       <div className="my-12 rounded-2xl border border-border bg-gradient-to-br from-honey/10 to-transparent p-8 sm:p-10 text-center">
-        <h3 className="font-[family-name:var(--font-syne)] text-2xl font-bold text-foreground mb-3">
+        <h3 className="text-2xl font-bold text-foreground mb-3">
           Not sure where to start?
         </h3>
         <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
@@ -184,7 +184,7 @@ export function UtahBadWebsitesContent() {
         </Button>
       </div>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         Your Fix-It-This-Week Checklist
       </h2>
 
@@ -198,7 +198,7 @@ export function UtahBadWebsitesContent() {
         <li>Install Analytics and Search Console if missing.</li>
       </ul>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         When It Makes Sense to Hire Help
       </h2>
 
@@ -218,7 +218,7 @@ export function UtahBadWebsitesContent() {
         credible, and makes it easy to choose you.
       </p>
 
-      <h2 className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl font-bold text-foreground pt-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         Stop Losing Customers You Never Knew You Had
       </h2>
 

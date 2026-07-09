@@ -80,7 +80,7 @@ const faqsByCategory: Record<FAQCategory, Array<{ id: string; q: string; a: stri
     {
       id: "websites-request-edits",
       q: "How can I request edits to the website?",
-      a: "You can request edits by emailing us directly at spencer.s.hodson@gmail.com. We'll review your request and get back to you within 24 hours. If you need to make a change that is more complex.",
+      a: "You can request edits by emailing us directly at spencer@beehivewebdesigns.com. We'll review your request and get back to you within 24 hours. If you need to make a change that is more complex.",
     },
   ],
 };
@@ -95,14 +95,15 @@ export function FAQSection() {
   const [selectedCategory, setSelectedCategory] = useState<FAQCategory>("pricing");
 
   return (
-    <section className="py-28 relative honeycomb-bg">
-      <div className="mx-auto max-w-4xl px-6 py-20">
+    <section className="py-24 bg-comb-light/60">
+      <div className="mx-auto max-w-4xl px-6">
         <FadeIn>
-          <div className="text-center mb-16">
-            <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight">
-              Common
-              <br />
-              <span className="gradient-text">Questions</span>
+          <div className="text-center mb-14">
+            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
+              FAQ
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+              Common questions
             </h2>
           </div>
         </FadeIn>
@@ -115,10 +116,10 @@ export function FAQSection() {
                 key={category.id}
                 type="button"
                 onClick={() => setSelectedCategory(category.id)}
-                className={`cursor-pointer rounded-full border px-6 py-2.5 text-sm font-medium transition-all duration-300 ${
+                className={`cursor-pointer rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? "border-honey bg-honey/20 text-honey"
-                    : "border-border bg-card/40 text-text-label hover:border-honey/40 hover:bg-card/60"
+                    ? "bg-honey text-espresso"
+                    : "bg-card text-text-label hover:bg-card/70"
                 }`}
               >
                 {category.label}
@@ -133,9 +134,9 @@ export function FAQSection() {
               <AccordionItem
                 key={faq.id}
                 value={faq.id}
-                className="rounded-2xl border border-border bg-card/60 hover:border-honey/20 transition-all duration-500 backdrop-blur-sm px-6 sm:px-8 last:border-b"
+                className="rounded-2xl bg-card card-soft border-none px-6 sm:px-8 last:border-b-0"
               >
-                <AccordionTrigger className="cursor-pointer font-[family-name:var(--font-syne)] text-base font-bold text-foreground hover:text-honey hover:no-underline py-6 [&[data-state=open]>svg]:text-honey">
+                <AccordionTrigger className="cursor-pointer text-base font-bold text-foreground hover:text-honey-dark hover:no-underline py-6 [&[data-state=open]>svg]:text-honey-dark">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-6">

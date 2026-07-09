@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Hexagon, ArrowRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BeeLogoLockup } from "@/components/bee-logo";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -24,15 +25,13 @@ function isNavLinkActive(pathname: string, href: string): boolean {
 export function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <Hexagon className="h-8 w-8 text-honey fill-honey/20 group-hover:fill-honey/30 transition-colors" />
-          <span className="font-[family-name:var(--font-syne)] text-xl font-bold tracking-tight">
-            Beehive Web Designs
-          </span>
+        <Link href="/" className="flex items-center gap-2 group min-w-0">
+          <BeeLogoLockup />
         </Link>
 
         {/* Desktop links */}
@@ -41,10 +40,10 @@ export function NavBar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium transition-colors tracking-wide uppercase ${
+              className={`text-sm font-medium transition-colors ${
                 isNavLinkActive(pathname, item.href)
-                  ? "text-honey"
-                  : "text-muted-foreground hover:text-honey"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {item.label}
@@ -56,11 +55,9 @@ export function NavBar() {
         <div className="hidden md:block">
           <Button
             asChild
-            className="bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full px-6"
+            className="bg-espresso hover:bg-espresso-light text-background font-semibold rounded-full px-6"
           >
-            <Link href="/contact">
-              Get a Free Quote <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+            <Link href="/contact">Get a free quote</Link>
           </Button>
         </div>
 
@@ -68,7 +65,8 @@ export function NavBar() {
         <button
           type="button"
           aria-label="Toggle mobile menu"
-          className="md:hidden text-foreground"
+          aria-expanded={mobileMenuOpen}
+          className="relative z-10 shrink-0 md:hidden p-2 -mr-2 text-foreground"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -81,16 +79,16 @@ export function NavBar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl mobile-menu-enter">
+        <div className="md:hidden border-t border-border bg-background mobile-menu-enter">
           <div className="flex flex-col gap-4 p-6">
             {navLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors uppercase tracking-wide ${
+                className={`text-sm font-medium transition-colors ${
                   isNavLinkActive(pathname, item.href)
-                    ? "text-honey"
-                    : "text-muted-foreground hover:text-honey"
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -99,10 +97,10 @@ export function NavBar() {
             ))}
             <Button
               asChild
-              className="mt-2 bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full"
+              className="mt-2 bg-espresso hover:bg-espresso-light text-background font-semibold rounded-full"
             >
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                Get a Free Quote
+                Get a free quote
               </Link>
             </Button>
           </div>

@@ -1,61 +1,108 @@
-import {
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { HoneycombDecor } from "@/components/HoneyCombDecor";
+import { ContactForm } from "@/components/contact/ContactForm";
+
+const trustItems = [
+  "Affordable, fixed pricing",
+  "Lifetime edits available",
+  "Money-back guarantee",
+  "24/7 human support",
+];
+
+const avatarShades = ["bg-[#E8C287]", "bg-[#D3A25C]", "bg-[#A9743B]"];
 
 export function HomeHero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 honeycomb-bg">
-      <HoneycombDecor className="absolute top-20 right-10 w-48 h-48 opacity-40 hidden lg:block" />
-      <HoneycombDecor className="absolute bottom-20 left-10 w-64 h-64 opacity-30 hidden lg:block" />
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-nectar/5 blur-[100px] pointer-events-none" />
-      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-        <FadeIn animateOnMount>
-          <Badge className="mb-6 rounded-full border-honey/30 bg-honey/10 text-honey-text px-4 py-1.5 text-xs font-medium tracking-widest uppercase">
-            Web Design &bull; Hosting & Maintenance &bull; SEO
-          </Badge>
-        </FadeIn>
+    <section className="pt-32 pb-0">
+      <div className="mx-auto max-w-7xl px-6 pb-20">
+        <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <FadeIn delay={0.05} animateOnMount>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] mb-6">
+                Websites that turn visitors into{" "}
+                <span className="text-honey">customers.</span>
+              </h1>
+            </FadeIn>
 
-        <h1 className="font-[family-name:var(--font-syne)] max-w-[800px] mx-auto text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-0.95 tracking-tight mb-6">
-          Websites That Work
-          <br />
-          <span className="gradient-text">As Hard As You Do</span>
-        </h1>
+            <FadeIn delay={0.1} animateOnMount>
+              <p className="max-w-md text-lg text-muted-foreground leading-relaxed mb-8">
+                Beautiful, affordable websites built from scratch, designed to
+                bring real customers to your door. No templates, no headaches,
+                no jargon.
+              </p>
+            </FadeIn>
 
-        <FadeIn delay={0.2} animateOnMount>
-          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10">
-            Beautiful websites built from scratch. We build, host, and optimize
-            websites that bring real customers to your door. Small business is our
-            specialty.
-          </p>
-        </FadeIn>
+            <FadeIn delay={0.15} animateOnMount>
+              <div className="flex flex-wrap items-center gap-6 mb-10">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-honey hover:bg-honey-light text-espresso font-bold rounded-full px-7"
+                >
+                  <Link href="/contact">Start your project</Link>
+                </Button>
+                <Link
+                  href="#work"
+                  className="text-sm font-semibold text-foreground hover:text-honey-dark transition-colors inline-flex items-center gap-1.5"
+                >
+                  See our work <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </FadeIn>
 
-        <FadeIn delay={0.3} animateOnMount>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              asChild
-              size="lg"
-              className="bg-honey hover:bg-honey-light text-primary-foreground font-bold rounded-full px-8 py-6 text-base glow-honey"
-            >
-              <Link href="/contact">
-                Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 py-6 text-base border-honey/30 text-honey-text hover:bg-honey/10 hover:text-honey-text font-medium"
-            >
-              <Link href="/services">See What We Do</Link>
-            </Button>
+            {/* <FadeIn delay={0.2} animateOnMount>
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-2.5">
+                  {avatarShades.map((shade) => (
+                    <span
+                      key={shade}
+                      className={`h-9 w-9 rounded-full border-2 border-background ${shade}`}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <p className="text-sm font-bold leading-tight">
+                    Loved by 20+ local businesses
+                  </p>
+                  <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+                    <span className="flex">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-3 w-3 text-honey fill-honey"
+                        />
+                      ))}
+                    </span>
+                    5.0 average rating
+                  </p>
+                </div>
+              </div>
+            </FadeIn> */}
           </div>
-        </FadeIn>
+
+          <ContactForm />
+        </div>
+      </div>
+
+      {/* Trust bar */}
+      <div className="bg-comb-light/70">
+        <div className="mx-auto max-w-7xl px-6 py-4">
+          <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-2">
+            {trustItems.map((item, i) => (
+              <li
+                key={item}
+                className="flex items-center gap-10 text-xs font-semibold text-foreground/80"
+              >
+                {item}
+                {i < trustItems.length - 1 && (
+                  <span className="hidden sm:block h-1 w-1 rounded-full bg-foreground/20" />
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

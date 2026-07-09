@@ -21,7 +21,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/page-shell";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { HoneycombDecor } from "@/components/HoneyCombDecor";
 import { PricingSection } from "@/components/pricing-section";
 import Link from "next/link";
 import { CTABanner } from "@/components/cta-banner";
@@ -78,19 +77,20 @@ export function ServicesClient() {
   return (
     <PageShell>
       {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 honeycomb-bg">
-        <HoneycombDecor className="absolute top-20 right-10 w-48 h-48 opacity-40 hidden lg:block" />
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-3xl mx-auto">
-            Your Complete
-            <br />
-            <span className="gradient-text">Website Solution</span>
+      <section className="pt-36 pb-24">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <FadeIn animateOnMount>
+            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
+              What we do
+            </p>
+          </FadeIn>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 max-w-3xl mx-auto">
+            Your complete{" "}
+            <span className="text-honey">website solution</span>
           </h1>
 
           <FadeIn delay={0.2} animateOnMount>
-            <p className="max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed mx-auto">
+            <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed mx-auto">
               Stop juggling multiple vendors. Beehive handles your entire web
               presence — from design and development to hosting and SEO — so
               you can focus on running your business.
@@ -104,9 +104,9 @@ export function ServicesClient() {
                 <Link
                   key={s.id}
                   href={`#${s.id}`}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-honey/20 bg-honey/5 hover:bg-honey/10 hover:border-honey/40 transition-all text-sm text-honey-text font-medium"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary hover:bg-comb-light transition-all text-sm text-foreground font-medium"
                 >
-                  <s.icon className="h-4 w-4" />
+                  <s.icon className="h-4 w-4 text-honey-dark" />
                   {s.title}
                 </Link>
               ))}
@@ -120,24 +120,20 @@ export function ServicesClient() {
         <section
           key={service.id}
           id={service.id}
-          className={`py-28 relative ${idx % 2 === 0 ? "" : "honeycomb-bg"}`}
+          className={`py-24 ${idx % 2 === 0 ? "bg-comb-light/60" : ""}`}
         >
-          {idx % 2 === 0 && (
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/[0.02] to-transparent pointer-events-none" />
-          )}
-
-          <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
               {/* Left: Info */}
               <FadeIn>
                 <div className={idx % 2 !== 0 ? "lg:order-2" : ""}>
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-honey/10 mb-6">
-                    <service.icon className="h-8 w-8 text-honey" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-honey/15 mb-6">
+                    <service.icon className="h-7 w-7 text-honey-dark" />
                   </div>
-                  <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight mb-3">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
                     {service.title}
                   </h2>
-                  <p className="text-honey-text text-sm font-medium uppercase tracking-wider mb-6">
+                  <p className="text-honey-dark text-xs font-bold uppercase tracking-widest mb-6">
                     {service.subtitle}
                   </p>
                   <p className="text-muted-foreground text-base leading-relaxed mb-8">
@@ -145,10 +141,10 @@ export function ServicesClient() {
                   </p>
                   <Button
                     asChild
-                    className="bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full px-8"
+                    className="bg-honey hover:bg-honey-light text-espresso font-bold rounded-full px-8"
                   >
                     <Link href="/contact">
-                      Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
+                      Get a quote <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
@@ -160,12 +156,10 @@ export function ServicesClient() {
                   {service.features.map((feat) => (
                     <div
                       key={feat.label}
-                      className="p-5 rounded-2xl border border-border bg-card/40 hover:border-honey/25 transition-all duration-500 group"
+                      className="p-5 rounded-2xl bg-card card-soft"
                     >
-                      <feat.icon className="h-5 w-5 text-honey/70 group-hover:text-honey transition-colors mb-3" />
-                      <h3 className="font-[family-name:var(--font-syne)] text-sm font-bold mb-1">
-                        {feat.label}
-                      </h3>
+                      <feat.icon className="h-5 w-5 text-honey-dark mb-3" />
+                      <h3 className="text-sm font-bold mb-1">{feat.label}</h3>
                       <p className="text-xs text-muted-foreground leading-relaxed">
                         {feat.desc}
                       </p>
@@ -179,11 +173,7 @@ export function ServicesClient() {
       ))}
 
       {/* ─── PRICING ─── */}
-      <PricingSection
-        showBadge={false}
-        buttonHref="/contact"
-        hasHoneycombBg={true}
-      />
+      <PricingSection buttonHref="/contact" />
 
       {/* ─── CTA BANNER ─── */}
       <CTABanner />

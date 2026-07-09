@@ -1,54 +1,59 @@
-import { Hexagon, Phone, Zap, Shield } from "lucide-react";
+import Image from "next/image";
+import { BadgeDollarSign, Phone, ShieldCheck } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { RotatingHex } from "@/components/home/rotating-hex";
+import { BeeMark } from "@/components/bee-logo";
 
-const highlights = [
+const highlights: {
+  title: string;
+  desc: string;
+  icon: LucideIcon;
+}[] = [
   {
+    title: "24/7 customer support",
+    desc: "Call or text anytime. You'll hear from us, not a robot.",
     icon: Phone,
-    title: "24/7 Customer Support",
-    desc: "Call or text us anytime. You'll hear from us, not a robot.",
   },
   {
-    icon: Zap,
-    title: "Fast and Secure",
-    desc: "We build fast, secure websites that drive real business results. Every detail is optimized for performance and conversions.",
+    title: "Fast & secure by default",
+    desc: "Every detail optimized for performance and conversions.",
+    icon: ShieldCheck,
   },
   {
-    icon: Shield,
-    title: "Money Back Guarantee",
-    desc: "If we can’t design something you like, you get your money back and the contract is cancelled. We stand by our work.",
+    title: "Money-back guarantee",
+    desc: "If we can't design something you like, you get your money back.",
+    icon: BadgeDollarSign,
   },
 ];
 
 export function HomeAboutSection() {
   return (
-    <section id="about" className="py-28 relative honeycomb-bg">
+    <section id="about" className="py-24 bg-comb-light/60">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-14 items-center">
           <FadeIn>
             <div>
-              <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-                A Hive of Creativity
-                <br />
-                <span className="gradient-text">Working for You</span>
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                We&apos;re not a massive agency that treats you like a number.
-                Beehive Web Designs is a focused team that partners closely with
-                small businesses to deliver websites that actually drive growth.
-                Every pixel, every line of code, every SEO strategy is crafted
-                with your goals in mind.
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
+                Why Beehive
               </p>
-              <div className="space-y-5">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
+                A hive of creativity, working for{" "}
+                <span className="text-honey">your</span> business
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-9 max-w-lg">
+                We&apos;re not a massive agency that treats you like a number.
+                Beehive partners closely with small businesses to deliver
+                websites that actually drive growth — every pixel and every
+                line of code crafted with your goals in mind.
+              </p>
+              <div className="space-y-6">
                 {highlights.map((item) => (
                   <div key={item.title} className="flex gap-4">
-                    <div className="shrink-0 mt-1 w-10 h-10 rounded-xl bg-honey/10 flex items-center justify-center">
+                    <div className="shrink-0 mt-0.5 w-10 h-10 rounded-xl bg-card card-soft flex items-center justify-center">
                       <item.icon className="h-5 w-5 text-honey" />
                     </div>
                     <div>
-                      <h3 className="font-[family-name:var(--font-syne)] font-bold text-base mb-1">
-                        {item.title}
-                      </h3>
+                      <h3 className="font-bold text-sm mb-1">{item.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {item.desc}
                       </p>
@@ -59,38 +64,27 @@ export function HomeAboutSection() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
-            <div className="relative">
-              <div className="aspect-square max-w-md mx-auto relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-full h-full">
-                    <RotatingHex
-                      rotation={360}
-                      duration={60}
-                      className="absolute inset-8"
-                    >
-                      <Hexagon className="w-full h-full text-honey/10 stroke-[0.5]" />
-                    </RotatingHex>
-                    <RotatingHex
-                      rotation={-360}
-                      duration={90}
-                      className="absolute inset-16"
-                    >
-                      <Hexagon className="w-full h-full text-honey/20 stroke-[0.5]" />
-                    </RotatingHex>
-                    <RotatingHex
-                      rotation={360}
-                      duration={45}
-                      className="absolute inset-24"
-                    >
-                      <Hexagon className="w-full h-full text-honey/30 stroke-[0.5]" />
-                    </RotatingHex>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-24 h-24 rounded-3xl bg-honey/10 flex items-center justify-center glow-honey">
-                        <Hexagon className="w-12 h-12 text-honey fill-honey/20" />
-                      </div>
-                    </div>
+          <FadeIn delay={0.15}>
+            <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden rounded-2xl border border-border bg-background/60 shadow-sm">
+              <Image
+                src="/why-beehive.jpg"
+                alt="Spencer Hodson, founder of Beehive Web Designs"
+                fill
+                unoptimized
+                className="object-cover object-[center_20%] contrast-[0.97] saturate-[0.98]"
+                sizes="448px"
+              />
+              <div className="absolute inset-x-0 bottom-0 flex justify-center p-5 sm:p-6">
+                <div className="flex w-full max-w-xs items-center justify-between gap-4 rounded-xl border border-border bg-card/95 px-5 py-4 shadow-lg backdrop-blur-sm">
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-bold uppercase tracking-wide text-foreground">
+                      Spencer Hodson
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Owner, Developer
+                    </p>
                   </div>
+                  <BeeMark className="h-8 w-8 shrink-0 text-honey" />
                 </div>
               </div>
             </div>
