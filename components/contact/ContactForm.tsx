@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/animations/FadeIn";
 
 type FormState = {
   status: "idle" | "submitting" | "success" | "error";
@@ -99,11 +98,10 @@ export function ContactForm() {
   };
 
   return (
-    <FadeIn delay={0.2}>
-      <div className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-8 sm:p-10">
-        <h3 className="font-[family-name:var(--font-syne)] text-2xl font-bold mb-2">
-          Send Us a Message
-        </h3>
+    <div className="min-h-[640px] rounded-2xl bg-card card-soft p-8 sm:p-10">
+        <p className="text-2xl font-extrabold mb-2">
+          Send us a message
+        </p>
         <p className="text-sm text-muted-foreground mb-8">
           Fill out the form below and we&apos;ll get back to you within 24 hours.
           No spam, no pressure — just a friendly conversation.
@@ -129,18 +127,18 @@ export function ContactForm() {
 
           {/* Success/Error Messages */}
           {formState.status === "success" && (
-            <div className="rounded-xl border border-green-500/30 bg-green-500/10 p-4 flex items-start gap-3">
-              <CheckCircle className="h-5 w-5 text-green-400 shrink-0 mt-0.5" />
-              <p className="text-sm text-green-400">
+            <div className="rounded-xl border border-success/30 bg-success/10 p-4 flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-success shrink-0 mt-0.5" />
+              <p className="text-sm text-success">
                 {formState.message}
               </p>
             </div>
           )}
 
           {formState.status === "error" && (
-            <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 flex items-start gap-3">
-              <AlertCircle className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
-              <p className="text-sm text-red-400">
+            <div className="rounded-xl border border-red-600/30 bg-red-600/10 p-4 flex items-start gap-3">
+              <AlertCircle className="h-5 w-5 text-red-700 shrink-0 mt-0.5" />
+              <p className="text-sm text-red-700">
                 {formState.message}
               </p>
             </div>
@@ -209,7 +207,7 @@ export function ContactForm() {
                 htmlFor="phone"
                 className="block text-sm font-medium mb-2 text-text-label"
               >
-                Phone <span className="text-text-placeholder">(optional)</span>
+                Phone <span className="text-muted-foreground">(optional)</span>
               </label>
               <input
                 id="phone"
@@ -271,7 +269,7 @@ export function ContactForm() {
           <Button
             type="submit"
             disabled={formState.status === "submitting"}
-            className="cursor-pointer w-full bg-honey hover:bg-honey-light text-primary-foreground font-bold rounded-full py-6 text-base glow-honey disabled:opacity-50 disabled:cursor-not-allowed"
+            className="cursor-pointer w-full bg-honey hover:bg-honey-light text-espresso font-bold rounded-full py-6 text-base disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {formState.status === "submitting" ? (
               "Sending..."
@@ -282,11 +280,10 @@ export function ContactForm() {
             )}
           </Button>
 
-          <p className="text-center text-xs text-text-placeholder">
+          <p className="text-center text-xs text-muted-foreground">
             We respect your privacy. No spam, ever.
           </p>
         </form>
-      </div>
-    </FadeIn>
+    </div>
   );
 }

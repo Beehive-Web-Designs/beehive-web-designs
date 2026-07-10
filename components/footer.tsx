@@ -1,42 +1,61 @@
 import Link from "next/link";
-import { Hexagon } from "lucide-react";
 import { CopyrightYear } from "@/components/copyright-year";
+import { BeeLogoLockup } from "@/components/bee-logo";
+import {
+  getLocationPath,
+  getLocationsByCounty,
+} from "@/lib/locations/utah-county";
+
+const utahCountyFooter = getLocationsByCounty("Utah County").slice(0, 6);
+const saltLakeFooter = getLocationsByCounty("Salt Lake County").slice(0, 6);
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-surface-footer">
+    <footer className="border-t-2 border-honey/20 bg-surface-footer">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Hexagon className="h-7 w-7 text-honey fill-honey/20" />
-              <span className="font-[family-name:var(--font-syne)] text-lg font-bold tracking-tight">
-                Beehive Web Designs
-              </span>
+            <Link href="/" prefetch={false} className="mb-4 inline-block">
+              <BeeLogoLockup markSize="sm" />
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Building beautiful, high-performing websites for small businesses
-              that want to grow.
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+              Beautiful, high-performing websites for small businesses that
+              want to grow.
             </p>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="mailto:spencer@beehivewebdesigns.com"
+                  className="text-sm text-muted-foreground transition-colors hover:text-honey-dark"
+                >
+                  spencer@beehivewebdesigns.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+19497099241"
+                  className="text-sm text-muted-foreground transition-colors hover:text-honey-dark"
+                >
+                  (949) 709-9241
+                </a>
+              </li>
+            </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h2 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-text-label mb-4">
-              Services
-            </h2>
+            <h2 className="mb-4 text-sm font-bold text-foreground">Services</h2>
             <ul className="space-y-2">
               {[
                 { label: "Web Design", href: "/services#web-design" },
                 { label: "Web Hosting", href: "/services#hosting" },
                 { label: "SEO Services", href: "/services#seo" },
-                { label: "Maintenance", href: "/services#maintenance" },
+                { label: "Maintenance", href: "/services#hosting" },
               ].map((s) => (
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="text-sm text-muted-foreground hover:text-honey transition-colors"
+                    prefetch={false}
+                    className="text-sm text-muted-foreground transition-colors hover:text-honey-dark"
                   >
                     {s.label}
                   </Link>
@@ -45,11 +64,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
           <div>
-            <h2 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-text-label mb-4">
-              Company
-            </h2>
+            <h2 className="mb-4 text-sm font-bold text-foreground">Company</h2>
             <ul className="space-y-2">
               {[
                 { label: "About", href: "/about" },
@@ -60,7 +76,8 @@ export function Footer() {
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="text-sm text-muted-foreground hover:text-honey transition-colors"
+                    prefetch={false}
+                    className="text-sm text-muted-foreground transition-colors hover:text-honey-dark"
                   >
                     {s.label}
                   </Link>
@@ -69,38 +86,56 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h2 className="font-[family-name:var(--font-syne)] font-bold text-sm uppercase tracking-widest text-text-label mb-4">
-              Contact
+            <h2 className="mb-4 text-sm font-bold text-foreground">
+              Utah County
             </h2>
             <ul className="space-y-2">
-              <li className="text-sm text-muted-foreground">
-                spencer.s.hodson@gmail.com
-              </li>
-              <li className="text-sm text-muted-foreground">
-              (949) 709-9241
-              </li>
+              {utahCountyFooter.map((location) => (
+                <li key={location.slug}>
+                  <Link
+                    href={getLocationPath(location.slug)}
+                    prefetch={false}
+                    className="text-sm text-muted-foreground transition-colors hover:text-honey-dark"
+                  >
+                    {location.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="mb-4 text-sm font-bold text-foreground">
+              Salt Lake County
+            </h2>
+            <ul className="space-y-2">
+              {saltLakeFooter.map((location) => (
+                <li key={location.slug}>
+                  <Link
+                    href={getLocationPath(location.slug)}
+                    prefetch={false}
+                    className="text-sm text-muted-foreground transition-colors hover:text-honey-dark"
+                  >
+                    {location.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-xs text-muted-foreground">
-            &copy; <CopyrightYear /> Beehive Web Designs. All rights
-            reserved.
+            &copy; <CopyrightYear /> Beehive Web Designs. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            {["Privacy", "Terms"].map((link) => (
-              <Link
-                key={link}
-                href="/"
-                className="text-xs text-muted-foreground hover:text-honey-text transition-colors"
-              >
-                {link}
-              </Link>
-            ))}
-          </div>
+          <Link
+            href="/contact"
+            prefetch={false}
+            className="text-xs text-muted-foreground transition-colors hover:text-honey-dark"
+          >
+            Get a free quote
+          </Link>
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Hexagon } from "lucide-react";
+import { BeeMark } from "@/components/bee-logo";
 
 export const metadata: Metadata = {
   title: "Open Graph preview",
@@ -14,126 +14,63 @@ export const metadata: Metadata = {
 export default function OpenGraphPage() {
   return (
     <div
-      className="relative flex items-center justify-center overflow-hidden honeycomb-bg"
+      className="relative flex items-center justify-center overflow-hidden"
       style={{
         width: "1200px",
         height: "630px",
-        backgroundColor: "#0F0F1A",
+        backgroundColor: "#FBF8F1",
       }}
     >
-
-      {/* Main content */}
       <div className="relative z-10 px-16 text-center">
-        {/* Logo/Brand name */}
-        <div className="mb-8 flex items-center justify-center gap-4">
-          <Hexagon className="h-16 w-16 text-honey fill-honey/20" />
-          <span className="font-[family-name:var(--font-syne)] text-5xl text-[#f0ede6] font-bold tracking-tight">
-            Beehive Web Designs
+        {/* Logo lockup */}
+        <div className="mb-10 flex items-center justify-center gap-5">
+          <span
+            className="flex items-center justify-center bg-honey"
+            style={{ width: "96px", height: "96px", borderRadius: "24px" }}
+          >
+            <BeeMark className="h-20 w-20 text-espresso" />
+          </span>
+          <span className="text-6xl font-bold tracking-tight">
+            <span className="text-espresso">Beehive</span>{" "}
+            <span className="text-honey-dark">Web Designs</span>
           </span>
         </div>
 
-        {/* Main headline */}
-        {/* <h1
-          className="mb-6 leading-tight"
+        {/* Headline */}
+        <h1
+          className="mb-6 text-espresso"
           style={{
-            fontFamily: "var(--font-syne)",
-            fontSize: "72px",
+            fontSize: "56px",
             fontWeight: 800,
-            color: "#F0EDE6",
-            letterSpacing: "-0.03em",
+            letterSpacing: "-0.02em",
             lineHeight: 1.1,
           }}
         >
-          Websites That Work
+          Websites that turn
           <br />
-          <span
-            style={{
-              background: "linear-gradient(135deg, #F5A623 0%, #FFC857 50%, #FFE66D 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            As Hard As You Do
-          </span>
-        </h1> */}
+          visitors into <span className="text-honey-dark">customers.</span>
+        </h1>
 
         {/* Subtitle */}
         <p
-          className="mb-8 max-w-2xl mx-auto"
+          className="mx-auto max-w-2xl"
           style={{
-            fontFamily: "var(--font-space-grotesk)",
-            fontSize: "28px",
-            color: "#8A8A9A",
+            fontSize: "26px",
+            color: "#6B5D4B",
             lineHeight: 1.5,
             fontWeight: 400,
           }}
         >
           Web Design • Hosting • SEO for Small Business
         </p>
-
-        {/* Decorative hexagon */}
-        <div className="flex justify-center mt-8">
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 100 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{ opacity: 0.3 }}
-          >
-            <path
-              d="M50 10L90 30V70L50 90L10 70V30L50 10Z"
-              stroke="#F5A623"
-              strokeWidth="2"
-            />
-            <path
-              d="M50 25L75 40V60L50 75L25 60V40L50 25Z"
-              stroke="#F5A623"
-              strokeWidth="1.5"
-              opacity="0.6"
-            />
-          </svg>
-        </div>
       </div>
 
-      {/* Corner decorative elements */}
-      <div
-        className="absolute top-8 right-8"
-        style={{ opacity: 0.2 }}
-      >
-        <svg
-          width="120"
-          height="120"
-          viewBox="0 0 200 200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M100 10L170 50V130L100 170L30 130V50L100 10Z"
-            stroke="#F5A623"
-            strokeWidth="2"
-          />
-        </svg>
+      {/* Corner bee marks */}
+      <div className="absolute top-10 right-10" style={{ opacity: 0.12 }}>
+        <BeeMark className="h-28 w-28 text-espresso" />
       </div>
-
-      <div
-        className="absolute bottom-8 left-8"
-        style={{ opacity: 0.15 }}
-      >
-        <svg
-          width="100"
-          height="100"
-          viewBox="0 0 200 200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M100 10L170 50V130L100 170L30 130V50L100 10Z"
-            stroke="#F5A623"
-            strokeWidth="1.5"
-          />
-        </svg>
+      <div className="absolute bottom-10 left-10" style={{ opacity: 0.1 }}>
+        <BeeMark className="h-20 w-20 text-espresso" />
       </div>
     </div>
   );

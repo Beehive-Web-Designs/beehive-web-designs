@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/blog/posts";
+import { serializeJsonLd } from "@/lib/serialize-json-ld";
+import { ogImageUrl, siteUrl } from "@/lib/site";
 import { BlogPostClient } from "./blog-post-client";
-
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://beehivewebdesigns.com";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -24,7 +23,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const url = `${baseUrl}/blog/${post.slug}`;
+  const url = `${siteUrl}/blog/${post.slug}`;
 
   return {
     title: post.title,
@@ -36,13 +35,13 @@ export async function generateMetadata({
     openGraph: {
       type: "article",
       url,
-      title: `${post.title} | Beehive Web Designs`,
+      title: post.title,
       description: post.description,
       publishedTime: post.publishedAt,
       authors: [post.author],
       images: [
         {
-          url: `${baseUrl}/og-image.jpg`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -51,9 +50,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | Beehive Web Designs`,
+      title: post.title,
       description: post.description,
-      images: [`${baseUrl}/og-image.jpg`],
+      images: [ogImageUrl],
     },
   };
 }
@@ -76,19 +75,23 @@ function BlogPostingJsonLd({
     publisher: {
       "@type": "Organization",
       name: "Beehive Web Designs",
-      url: baseUrl,
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/bee-logo.svg`,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${baseUrl}/blog/${post.slug}`,
+      "@id": `${siteUrl}/blog/${post.slug}`,
     },
-    image: `${baseUrl}/og-image.jpg`,
+    image: ogImageUrl,
   };
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
     />
   );
 }

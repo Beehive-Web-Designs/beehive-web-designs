@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { HomeClient } from "@/components/home/home-client";
-
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://beehivewebdesigns.com";
+import { PageShell } from "@/components/page-shell";
+import { HomeHero } from "@/components/home/home-hero";
+import { HomeSections } from "@/components/home/home-sections";
+import { ogImageUrl, siteUrl } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Websites That Work As Hard As You Do",
+    title: "Small Business Web Design, Hosting & SEO",
     description:
       "Custom web design, hosting, and SEO for small businesses. Beehive Web Designs builds fast, beautiful sites that bring customers to your door.",
     keywords: [
@@ -14,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "custom websites",
       "web hosting",
       "local SEO",
+      "Utah web design",
       "Beehive Web Designs",
     ],
     alternates: {
@@ -21,13 +22,13 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       type: "website",
-      url: baseUrl,
-      title: "Beehive Web Designs | Websites That Work As Hard As You Do",
+      url: siteUrl,
+      title: "Small Business Web Design, Hosting & SEO | Beehive Web Designs",
       description:
         "Custom web design, hosting, and SEO for small businesses. Beautiful sites built from scratch.",
       images: [
         {
-          url: `${baseUrl}/og-image.jpg`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: "Beehive Web Designs",
@@ -36,14 +37,19 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Beehive Web Designs | Websites That Work As Hard As You Do",
+      title: "Small Business Web Design, Hosting & SEO | Beehive Web Designs",
       description:
         "Custom web design, hosting, and SEO for small businesses.",
-      images: [`${baseUrl}/og-image.jpg`],
+      images: [ogImageUrl],
     },
   };
 }
 
 export default function Home() {
-  return <HomeClient />;
+  return (
+    <PageShell>
+      <HomeHero />
+      <HomeSections />
+    </PageShell>
+  );
 }

@@ -1,14 +1,14 @@
 "use client";
 
-import { Mail, Phone, MapPin, Clock, MessageSquare, Hexagon } from "lucide-react";
-import { FadeIn } from "@/components/animations/FadeIn";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { BeeMark } from "@/components/bee-logo";
 
 const contactInfo = [
   {
     id: "email",
     icon: Mail,
     title: "Email Us",
-    value: "spencer.s.hodson@gmail.com",
+    value: "spencer@beehivewebdesigns.com",
     desc: "We respond within 24 hours on business days.",
   },
   {
@@ -36,22 +36,20 @@ const contactInfo = [
 
 export function ContactInfo() {
   return (
-    <FadeIn>
-      <h2 className="font-[family-name:var(--font-syne)] text-3xl font-bold tracking-tight mb-8">
-        Get In <span className="gradient-text">Touch</span>
+    <>
+      <h2 className="text-3xl font-extrabold tracking-tight mb-8">
+        Get in <span className="text-honey-dark">touch</span>
       </h2>
 
       <div className="space-y-6">
         {contactInfo.map((item) => (
-          <div key={item.id} className="flex gap-4 group">
-            <div className="shrink-0 w-12 h-12 rounded-2xl bg-honey/10 flex items-center justify-center group-hover:bg-honey/20 transition-colors">
-              <item.icon className="h-5 w-5 text-honey" />
+          <div key={item.id} className="flex gap-4">
+            <div className="shrink-0 w-12 h-12 rounded-xl bg-honey/15 flex items-center justify-center">
+              <item.icon className="h-5 w-5 text-honey-dark" />
             </div>
             <div>
-              <h3 className="font-[family-name:var(--font-syne)] font-bold text-sm">
-                {item.title}
-              </h3>
-              <p className="text-honey-text text-sm font-medium">
+              <h3 className="font-bold text-sm">{item.title}</h3>
+              <p className="text-honey-dark text-sm font-medium">
                 {item.value}
               </p>
               <p className="text-xs text-muted-foreground mt-0.5">
@@ -62,17 +60,12 @@ export function ContactInfo() {
         ))}
       </div>
 
-      {/* Decorative hex */}
+      {/* Decorative bee */}
       <div className="hidden lg:flex mt-12 items-center justify-center">
-        <div className="relative w-48 h-48">
-          <Hexagon className="w-full h-full text-honey/10 stroke-[0.5]" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-3xl bg-honey/10 flex items-center justify-center">
-              <MessageSquare className="w-8 h-8 text-honey" />
-            </div>
-          </div>
+        <div className="w-24 h-24 rounded-3xl bg-honey flex items-center justify-center">
+          <BeeMark className="w-18 h-18 text-espresso" />
         </div>
       </div>
-    </FadeIn>
+    </>
   );
 }

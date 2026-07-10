@@ -1,7 +1,9 @@
 import type { ComponentType } from "react";
 import { UtahBadWebsitesContent } from "./posts/utah-bad-websites-content";
+import { UtahWebsiteCostContent } from "./posts/utah-website-cost-content";
 
 const postContent: Record<string, ComponentType> = {
+  "how-much-does-a-website-cost-utah": UtahWebsiteCostContent,
   "utah-small-business-bad-websites": UtahBadWebsitesContent,
 };
 

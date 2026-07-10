@@ -1,19 +1,16 @@
 import Link from "next/link";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { FadeIn } from "@/components/animations/FadeIn";
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 type PricingPlan = {
   name: string;
   price: string;
+  priceSuffix?: string;
   priceSubtext?: string;
-  period?: string;
-  desc: string;
   features: string[];
-  negativeFeatures?: string[];
+  buttonLabel: string;
   popular?: boolean;
 };
 
@@ -21,54 +18,46 @@ type PricingSectionProps = {
   showBadge?: boolean;
   buttonHref?: string;
   customMessage?: ReactNode;
-  hasHoneycombBg?: boolean;
+  className?: string;
 };
 
 const defaultPlans: PricingPlan[] = [
   {
     name: "Lump Sum",
     price: "$3,500",
-    priceSubtext: "+ $25/month",
-    desc: "Pay once for design and development. Ideal for businesses seeking an upfront website solution.",
+    priceSubtext: "+ $25/mo hosting",
     features: [
-      "Complete Design & Development",
-      "$25/Month for Hosting",
-      "Optional: $50/Month for Unlimited Edits",
-      "$100 One-Time Fee Per Page After 5 Pages",
+      "Complete design & development",
+      "Optional $50/mo unlimited edits",
+      "$100 per page after 5 pages",
     ],
-    negativeFeatures: [
-      "No Lifetime Updates",
-      "No 24/7 Support",
-    ],
+    buttonLabel: "Get started",
     popular: false,
   },
   {
     name: "Monthly Subscription",
     price: "$150",
-    priceSubtext: "/month",
-    desc: "Lifetime edits and hosting included. Ideal for ongoing support and maintenance.",
+    priceSuffix: "/mo",
+    priceSubtext: "Edits + hosting included",
     features: [
-      "Complete Design & Development",
-      "Hosting Included",
-      "Lifetime Edits Included",
-      "$100 One-Time Fee Per Page After 5 Pages",
-      "Lifetime Updates",
-      "24/7 Support",
+      "Complete design & development",
+      "Hosting included",
+      "Lifetime edits & updates",
+      "24/7 priority support",
     ],
+    buttonLabel: "Get started",
     popular: true,
   },
   {
-    name: "Custom Pricing",
-    price: "Custom",
-    desc: "Tailored solutions for complex projects and unique requirements.",
+    name: "Custom",
+    price: "Let's talk",
+    priceSubtext: "For complex projects",
     features: [
-      "Complete Design & Development",
-      "Custom Solutions",
-      "Flexible Payment Terms",
-      "Dedicated Support",
-      "Ongoing Maintenance & Hosting",
-      "Custom Integrations",
+      "Custom solutions & integrations",
+      "Flexible payment terms",
+      "Dedicated ongoing support",
     ],
+    buttonLabel: "Get in touch",
     popular: false,
   },
 ];
@@ -77,117 +66,115 @@ export function PricingSection({
   showBadge = true,
   buttonHref = "/contact",
   customMessage,
-  hasHoneycombBg = false,
+  className,
 }: PricingSectionProps) {
+  const href = buttonHref.startsWith("#") ? "/contact" : buttonHref;
   return (
-    <section className={`py-28 relative ${hasHoneycombBg ? "honeycomb-bg" : ""}`}>
-      {!hasHoneycombBg && (
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/[0.02] to-transparent pointer-events-none" />
-      )}
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-        <FadeIn>
-          <div className="text-center mb-16">
+    <section id="pricing" className={cn("py-24", className)}>
+      <div className="mx-auto max-w-7xl px-6">
+        
+          <div className="text-center mb-14">
             {showBadge && (
-              <Badge className="mb-4 rounded-full border-honey/30 bg-honey/10 text-honey-text px-4 py-1.5 text-xs tracking-widest uppercase">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
                 Pricing
-              </Badge>
+              </p>
             )}
-            <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight">
-              Simple, Transparent
-              <br />
-              <span className="gradient-text">Pricing</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
+              Simple, transparent pricing
             </h2>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              No hidden fees. No surprises. Just honest pricing for honest work.
+              No hidden fees. No surprises. Pick what fits your business.
             </p>
           </div>
-        </FadeIn>
+        
 
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {defaultPlans.map((plan, i) => (
-            <FadeIn key={plan.name} delay={i * 0.1} className="h-full">
-              <Card
-                className={`relative h-full backdrop-blur-sm transition-all duration-500 ${
-                  plan.popular
-                    ? "bg-card/80 border-honey/40 glow-honey"
-                    : "bg-card/40 border-border hover:border-honey/20"
+            <div key={plan.name} className="h-full">
+              <div
+                className={`relative h-full rounded-2xl p-8 flex flex-col card-soft ${
+                  plan.popular ? "bg-honey" : "bg-card"
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-honey text-primary-foreground font-bold px-4 py-1 rounded-full text-xs">
-                      Most Popular
-                    </Badge>
-                  </div>
+                  <span className="absolute top-6 right-6 rounded-full bg-espresso px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-background">
+                    Most popular
+                  </span>
                 )}
-                <CardContent className="p-8 h-full flex flex-col">
-                  <h3 className="font-[family-name:var(--font-syne)] text-lg font-bold mb-2">
-                    {plan.name}
-                  </h3>
-                  <div className={plan.period ? "mb-1" : "mb-4"}>
-                    <span className="font-[family-name:var(--font-syne)] text-4xl font-black text-honey">
-                      {plan.price}
-                    </span>
-                    {plan.priceSubtext && (
-                      <span className="font-[family-name:var(--font-syne)] text-xl text-muted-foreground ml-1">
-                        {plan.priceSubtext}
-                      </span>
-                    )}
-                  </div>
-                  {plan.period && (
-                    <p className="text-xs text-muted-foreground mb-5">
-                      {plan.period}
-                    </p>
-                  )}
-                  <p className="text-sm text-muted-foreground mb-6">
-                    {plan.desc}
-                  </p>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {plan.features.map((f) => (
-                      <li
-                        key={f}
-                        className="flex items-center gap-2 text-sm text-text-label"
-                      >
-                        <CheckCircle2 className="h-4 w-4 text-honey shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                    {plan.negativeFeatures?.map((f) => (
-                      <li
-                        key={f}
-                        className="flex items-center gap-2 text-sm text-text-placeholder"
-                      >
-                        <XCircle className="h-4 w-4 text-text-placeholder shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    asChild
-                    className={`mt-auto w-full rounded-full font-semibold ${
-                      plan.popular
-                        ? "bg-honey hover:bg-honey-light text-primary-foreground"
-                        : "bg-honey/10 hover:bg-honey/20 text-honey-text border border-honey/30"
+                <h3
+                  className={`font-bold mb-5 ${
+                    plan.popular ? "text-espresso" : "text-foreground"
+                  }`}
+                >
+                  {plan.name}
+                </h3>
+                <div className="mb-1">
+                  <span
+                    className={`text-4xl font-extrabold tracking-tight ${
+                      plan.popular ? "text-espresso" : "text-foreground"
                     }`}
                   >
-                    {buttonHref.startsWith("#") ? (
-                      <Link href={buttonHref}>Get Started</Link>
-                    ) : (
-                      <Link href={buttonHref}>Get Started</Link>
-                    )}
-                  </Button>
-                </CardContent>
-              </Card>
-            </FadeIn>
+                    {plan.price}
+                  </span>
+                  {plan.priceSuffix && (
+                    <span
+                      className={`text-lg font-semibold ml-0.5 ${
+                        plan.popular
+                          ? "text-espresso"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {plan.priceSuffix}
+                    </span>
+                  )}
+                </div>
+                {plan.priceSubtext && (
+                  <p
+                    className={`text-sm font-medium mb-6 ${
+                      plan.popular ? "text-espresso/80" : "text-honey-dark"
+                    }`}
+                  >
+                    {plan.priceSubtext}
+                  </p>
+                )}
+                <ul className="space-y-3 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <li
+                      key={f}
+                      className={`flex items-center gap-2.5 text-sm ${
+                        plan.popular ? "text-espresso" : "text-text-label"
+                      }`}
+                    >
+                      <Check
+                        className={`h-4 w-4 shrink-0 ${
+                          plan.popular ? "text-espresso" : "text-success"
+                        }`}
+                      />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  asChild
+                  className={`mt-auto w-full rounded-full font-semibold ${
+                    plan.popular
+                      ? "bg-espresso hover:bg-espresso-light text-background"
+                      : "bg-transparent hover:bg-secondary text-foreground border border-border"
+                  }`}
+                >
+                  <Link href={href}>{plan.buttonLabel}</Link>
+                </Button>
+              </div>
+            </div>
           ))}
         </div>
 
         {customMessage && (
-          <FadeIn delay={0.3}>
+          
             <p className="text-center text-sm text-muted-foreground mt-10">
               {customMessage}
             </p>
-          </FadeIn>
+          
         )}
       </div>
     </section>

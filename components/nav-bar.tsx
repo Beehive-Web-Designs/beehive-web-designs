@@ -3,8 +3,17 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Hexagon, ArrowRight, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { BeeLogoLockup } from "@/components/bee-logo";
+import {
+  getLocationPath,
+  getLocationsByCounty,
+  isLocationPath,
+  locationCounties,
+} from "@/lib/locations/utah-county";
+
+const ctaButtonClassName =
+  "inline-flex items-center justify-center bg-honey hover:bg-honey-light text-espresso font-bold rounded-full px-7 h-11 text-sm transition-all";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -21,30 +30,124 @@ function isNavLinkActive(pathname: string, href: string): boolean {
   return pathname === href;
 }
 
+function LocationCityLinks({
+  pathname,
+  onNavigate,
+  className,
+}: {
+  pathname: string;
+  onNavigate?: () => void;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      {locationCounties.map((county) => (
+        <div key={county} className="mb-4 last:mb-0">
+          <p className="mb-2 px-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
+            {county}
+          </p>
+          <div className="grid grid-cols-2 gap-1">
+            {getLocationsByCounty(county).map((location) => (
+              <Link
+                key={location.slug}
+                href={getLocationPath(location.slug)}
+                prefetch={false}
+                className={`rounded-lg px-3 py-2 text-sm transition-colors hover:bg-secondary ${
+                  pathname === getLocationPath(location.slug)
+                    ? "font-semibold text-honey-dark"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                onClick={onNavigate}
+              >
+                {location.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileLocationsOpen, setMobileLocationsOpen] = useState(false);
+  const [desktopLocationsOpen, setDesktopLocationsOpen] = useState(false);
   const pathname = usePathname();
+  const locationsActive = isLocationPath(pathname);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-honey/10 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <Hexagon className="h-8 w-8 text-honey fill-honey/20 group-hover:fill-honey/30 transition-colors" />
-          <span className="font-[family-name:var(--font-syne)] text-xl font-bold tracking-tight">
-            Beehive Web Designs
-          </span>
+        <Link
+          href="/"
+          prefetch={false}
+          className="flex min-w-0 items-center gap-2 group"
+        >
+          <BeeLogoLockup />
         </Link>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((item) => (
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.slice(0, 3).map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium transition-colors tracking-wide uppercase ${
+              prefetch={false}
+              className={`text-base font-medium transition-colors ${
                 isNavLinkActive(pathname, item.href)
-                  ? "text-honey"
-                  : "text-muted-foreground hover:text-honey"
+                  ? "font-semibold text-honey-dark"
+                  : "text-muted-foreground hover:text-honey-dark"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          <div
+            className="relative"
+            onMouseEnter={() => setDesktopLocationsOpen(true)}
+            onMouseLeave={() => setDesktopLocationsOpen(false)}
+          >
+            <button
+              type="button"
+              aria-expanded={desktopLocationsOpen}
+              aria-haspopup="true"
+              className={`inline-flex items-center gap-1 text-base font-medium transition-colors ${
+                locationsActive
+                  ? "font-semibold text-honey-dark"
+                  : "text-muted-foreground hover:text-honey-dark"
+              }`}
+              onClick={() => setDesktopLocationsOpen((open) => !open)}
+            >
+              Locations
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  desktopLocationsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {desktopLocationsOpen && (
+              <div className="absolute left-1/2 top-full z-50 w-[36rem] -translate-x-1/2 pt-3">
+                <div className="max-h-[70vh] overflow-y-auto rounded-2xl border border-border bg-white p-4 shadow-lg">
+                  <LocationCityLinks
+                    pathname={pathname}
+                    onNavigate={() => setDesktopLocationsOpen(false)}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+
+          {navLinks.slice(3).map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              prefetch={false}
+              className={`text-base font-medium transition-colors ${
+                isNavLinkActive(pathname, item.href)
+                  ? "font-semibold text-honey-dark"
+                  : "text-muted-foreground hover:text-honey-dark"
               }`}
             >
               {item.label}
@@ -52,23 +155,17 @@ export function NavBar() {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="hidden md:block">
-          <Button
-            asChild
-            className="bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full px-6"
-          >
-            <Link href="/contact">
-              Get a Free Quote <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <Link href="/contact" prefetch={false} className={ctaButtonClassName}>
+            Get a free quote
+          </Link>
         </div>
 
-        {/* Mobile toggle */}
         <button
           type="button"
           aria-label="Toggle mobile menu"
-          className="md:hidden text-foreground"
+          aria-expanded={mobileMenuOpen}
+          className="relative z-10 -mr-2 shrink-0 p-2 text-foreground md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -79,32 +176,79 @@ export function NavBar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl mobile-menu-enter">
+        <div className="mobile-menu-enter border-t border-border bg-white md:hidden">
           <div className="flex flex-col gap-4 p-6">
-            {navLinks.map((item) => (
+            {navLinks.slice(0, 3).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors uppercase tracking-wide ${
+                prefetch={false}
+                className={`text-base font-medium transition-colors ${
                   isNavLinkActive(pathname, item.href)
-                    ? "text-honey"
-                    : "text-muted-foreground hover:text-honey"
+                    ? "font-semibold text-honey-dark"
+                    : "text-muted-foreground hover:text-honey-dark"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <Button
-              asChild
-              className="mt-2 bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full"
-            >
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                Get a Free Quote
+
+            <div>
+              <button
+                type="button"
+                aria-expanded={mobileLocationsOpen}
+                className={`flex w-full items-center justify-between text-base font-medium transition-colors ${
+                  locationsActive
+                    ? "font-semibold text-honey-dark"
+                    : "text-muted-foreground hover:text-honey-dark"
+                }`}
+                onClick={() => setMobileLocationsOpen((open) => !open)}
+              >
+                Locations
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${
+                    mobileLocationsOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {mobileLocationsOpen && (
+                <div className="mt-3 border-l border-border pl-2">
+                  <LocationCityLinks
+                    pathname={pathname}
+                    onNavigate={() => setMobileMenuOpen(false)}
+                    className="max-h-80 overflow-y-auto"
+                  />
+                </div>
+              )}
+            </div>
+
+            {navLinks.slice(3).map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                prefetch={false}
+                className={`text-base font-medium transition-colors ${
+                  isNavLinkActive(pathname, item.href)
+                    ? "font-semibold text-honey-dark"
+                    : "text-muted-foreground hover:text-honey-dark"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
               </Link>
-            </Button>
+            ))}
+
+            <Link
+              href="/contact"
+              prefetch={false}
+              className={`mt-2 ${ctaButtonClassName}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get a free quote
+            </Link>
           </div>
         </div>
       )}

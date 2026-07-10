@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import {
   Globe,
   Search,
@@ -19,12 +20,18 @@ import {
   Target,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PageShell } from "@/components/page-shell";
-import { FadeIn } from "@/components/animations/FadeIn";
-import { HoneycombDecor } from "@/components/HoneyCombDecor";
-import { PricingSection } from "@/components/pricing-section";
 import Link from "next/link";
-import { CTABanner } from "@/components/cta-banner";
+
+const PricingSection = dynamic(
+  () =>
+    import("@/components/pricing-section").then((mod) => mod.PricingSection),
+  { loading: () => <div className="py-24" aria-hidden="true" /> }
+);
+
+const CTABanner = dynamic(
+  () => import("@/components/cta-banner").then((mod) => mod.CTABanner),
+  { loading: () => <div className="py-20" aria-hidden="true" /> }
+);
 
 const services = [
   {
@@ -74,70 +81,26 @@ const services = [
   },
 ];
 
-export function ServicesClient() {
+export function ServicesDetails() {
   return (
-    <PageShell>
-      {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 honeycomb-bg">
-        <HoneycombDecor className="absolute top-20 right-10 w-48 h-48 opacity-40 hidden lg:block" />
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-3xl mx-auto">
-            Your Complete
-            <br />
-            <span className="gradient-text">Website Solution</span>
-          </h1>
-
-          <FadeIn delay={0.2} animateOnMount>
-            <p className="max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed mx-auto">
-              Stop juggling multiple vendors. Beehive handles your entire web
-              presence — from design and development to hosting and SEO — so
-              you can focus on running your business.
-            </p>
-          </FadeIn>
-
-          {/* Quick nav */}
-          <FadeIn delay={0.3} animateOnMount>
-            <div className="flex flex-wrap gap-3 mt-10 justify-center">
-              {services.map((s) => (
-                <Link
-                  key={s.id}
-                  href={`#${s.id}`}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-honey/20 bg-honey/5 hover:bg-honey/10 hover:border-honey/40 transition-all text-sm text-honey-text font-medium"
-                >
-                  <s.icon className="h-4 w-4" />
-                  {s.title}
-                </Link>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ─── SERVICES DETAIL SECTIONS ─── */}
+    <>
       {services.map((service, idx) => (
         <section
           key={service.id}
           id={service.id}
-          className={`py-28 relative ${idx % 2 === 0 ? "" : "honeycomb-bg"}`}
+          className={`py-24 ${idx % 2 === 0 ? "bg-section-alt" : ""}`}
         >
-          {idx % 2 === 0 && (
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/[0.02] to-transparent pointer-events-none" />
-          )}
-
-          <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
-              {/* Left: Info */}
-              <FadeIn>
+              
                 <div className={idx % 2 !== 0 ? "lg:order-2" : ""}>
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-honey/10 mb-6">
-                    <service.icon className="h-8 w-8 text-honey" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-honey/15 mb-6">
+                    <service.icon className="h-7 w-7 text-honey-dark" />
                   </div>
-                  <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight mb-3">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
                     {service.title}
                   </h2>
-                  <p className="text-honey-text text-sm font-medium uppercase tracking-wider mb-6">
+                  <p className="text-honey-dark text-xs font-bold uppercase tracking-widest mb-6">
                     {service.subtitle}
                   </p>
                   <p className="text-muted-foreground text-base leading-relaxed mb-8">
@@ -145,48 +108,38 @@ export function ServicesClient() {
                   </p>
                   <Button
                     asChild
-                    className="bg-honey hover:bg-honey-light text-primary-foreground font-semibold rounded-full px-8"
+                    className="bg-honey hover:bg-honey-light text-espresso font-bold rounded-full px-8"
                   >
                     <Link href="/contact">
-                      Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
+                      Get a quote <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
-              </FadeIn>
+              
 
-              {/* Right: Features grid */}
-              <FadeIn delay={0.2}>
+              
                 <div className={`grid sm:grid-cols-2 gap-4 ${idx % 2 !== 0 ? "lg:order-1" : ""}`}>
                   {service.features.map((feat) => (
                     <div
                       key={feat.label}
-                      className="p-5 rounded-2xl border border-border bg-card/40 hover:border-honey/25 transition-all duration-500 group"
+                      className="p-5 rounded-2xl bg-card card-soft"
                     >
-                      <feat.icon className="h-5 w-5 text-honey/70 group-hover:text-honey transition-colors mb-3" />
-                      <h3 className="font-[family-name:var(--font-syne)] text-sm font-bold mb-1">
-                        {feat.label}
-                      </h3>
+                      <feat.icon className="h-5 w-5 text-honey-dark mb-3" />
+                      <h3 className="text-sm font-bold mb-1">{feat.label}</h3>
                       <p className="text-xs text-muted-foreground leading-relaxed">
                         {feat.desc}
                       </p>
                     </div>
                   ))}
                 </div>
-              </FadeIn>
+              
             </div>
           </div>
         </section>
       ))}
 
-      {/* ─── PRICING ─── */}
-      <PricingSection
-        showBadge={false}
-        buttonHref="/contact"
-        hasHoneycombBg={true}
-      />
-
-      {/* ─── CTA BANNER ─── */}
-      <CTABanner />
-    </PageShell>
+      <PricingSection buttonHref="/contact" />
+      <CTABanner className="bg-section-alt" />
+    </>
   );
 }

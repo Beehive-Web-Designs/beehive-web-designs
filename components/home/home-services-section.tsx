@@ -1,88 +1,111 @@
-import {
-  Globe,
-  Search,
-  Server,
-  CheckCircle2,
-} from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { FadeIn } from "@/components/animations/FadeIn";
+import { Check } from "lucide-react";
 
 const services = [
   {
-    icon: Globe,
-    title: "Web Design & Development",
-    desc: "Custom-built websites that look incredible and convert visitors into customers. No templates, no cookie-cutter solutions.",
+    title: "Mobile-First & Responsive",
+    image: "/stock/mobile-640.webp",
+    imageSrcSet: "/stock/mobile-384.webp 384w, /stock/mobile-640.webp 640w",
+    imageAlt: "Website displayed on a smartphone",
+    desc: "Every site is written with clean code from scratch with a mobile-first design approach, ensuring your website looks great and works perfectly on all screen sizes.",
     features: [
-      "Works Great on Any Device",
-      "Loads Quickly for Visitors",
-      "Smooth, Professional Animations",
+      "Designed for phones first",
+      "Looks fantastic on every screen size",
+      "Clean code, no template baggage",
     ],
   },
   {
-    icon: Server,
-    title: "Reliable Web Hosting",
-    desc: "Lightning-fast, secure hosting that keeps your site running 24/7. We handle the tech so you don't have to.",
+    title: "Optimized Page Speed",
+    image: "/stock/page-speed-640.webp",
+    imageSrcSet:
+      "/stock/page-speed-384.webp 384w, /stock/page-speed-640.webp 640w",
+    imageAlt: "Google PageSpeed Insights performance score",
+    desc: "Visitors won't wait around. Hand-coded sites built to load in a flash so more people stay, browse, and convert.",
     features: [
-      "Your Site Stays Online 24/7",
-      "Secure & Safe for Customers",
-      "Fast Loading Worldwide",
+      "Built for fast load times",
+      "Strong Google PageSpeed scores",
+      "Better UX, more conversions",
     ],
   },
   {
-    icon: Search,
-    title: "SEO That Delivers",
-    desc: "Get found by the right people at the right time. Our SEO strategies drive real traffic and real results.",
+    title: "SEO Services",
+    image: "/stock/google-search-640.webp",
+    imageSrcSet:
+      "/stock/google-search-384.webp 384w, /stock/google-search-640.webp 640w",
+    imageAlt: "Google search results on a laptop",
+    desc: "No outsourced specialists or vague promises — I handle your SEO personally with honest local strategies and clear reporting.",
     features: [
-      "Get Found by Local Customers",
-      "Show Up in Google Searches",
-      "Optimized for Search Engines",
+      "Local SEO for your market",
+      "Sites built to rank from day one",
+      "Straightforward progress updates",
     ],
   },
-];
+  {
+    title: "Small Agency, Real Attention",
+    image: "/stock/office-selfie-640.webp",
+    imageSrcSet:
+      "/stock/office-selfie-384.webp 384w, /stock/office-selfie-640.webp 640w",
+    imageAlt: "Beehive Web Designs team in the office",
+    desc: "You're not a ticket in a queue. Work directly with me — quick replies, no phone trees, and a partner who's invested in your growth.",
+    features: [
+      "Talk directly to your designer",
+      "Fast, personal support",
+      "A partner, not a vendor",
+    ],
+  },
+] as const;
 
 export function HomeServicesSection() {
   return (
-    <section id="services" className="py-28 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/[0.02] to-transparent pointer-events-none" />
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-        <FadeIn>
-          <div className="text-center mb-16">
-            <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight">
-              Everything Your Business
-              <br />
-              <span className="gradient-text">Needs Online</span>
+    <section id="services" className="py-24 bg-section-alt">
+      <div className="mx-auto max-w-7xl px-6">
+        
+          <div className="text-center mb-14">
+            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
+              What we do
+            </p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
+              Everything your business needs
+              <br className="hidden sm:block" /> to be online
             </h2>
           </div>
-        </FadeIn>
+        
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
-            <FadeIn key={service.title} delay={i * 0.1}>
-              <Card className="bg-card/60 border-border hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
-                <CardContent className="p-8">
-                  <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-honey/10 group-hover:bg-honey/20 transition-colors">
-                    <service.icon className="h-7 w-7 text-honey" />
-                  </div>
-                  <h3 className="font-[family-name:var(--font-syne)] text-xl font-bold mb-3">
-                    {service.title}
-                  </h3>
+            <div key={service.title} className="h-full">
+              <div className="h-full overflow-hidden rounded-2xl bg-card card-soft">
+                <div className="relative aspect-[16/10] border-b border-border bg-muted/40 overflow-hidden">
+                  <img
+                    src={service.image}
+                    srcSet={service.imageSrcSet}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    alt={service.imageAlt}
+                    width={640}
+                    height={400}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover object-top"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                   <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
                     {service.desc}
                   </p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {service.features.map((f) => (
                       <li
                         key={f}
-                        className="flex items-center gap-2 text-sm text-text-label"
+                        className="flex items-center gap-2.5 text-sm text-text-label"
                       >
-                        <CheckCircle2 className="h-4 w-4 text-honey shrink-0" />
+                        <Check className="h-4 w-4 text-success shrink-0" />
                         {f}
                       </li>
                     ))}
                   </ul>
-                </CardContent>
-              </Card>
-            </FadeIn>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>

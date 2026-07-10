@@ -9,12 +9,9 @@ import {
   Zap,
   Linkedin,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { PageShell } from "@/components/page-shell";
-import { FadeIn } from "@/components/animations/FadeIn";
-import { HoneycombDecor } from "@/components/HoneyCombDecor";
+import { AboutDifferentSection } from "@/components/about/about-different-section";
 import { CTABanner } from "@/components/cta-banner";
-import { ProcessSection } from "@/components/process-section";
 
 const values = [
   {
@@ -62,24 +59,24 @@ export function AboutClient() {
   return (
     <PageShell>
       {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 honeycomb-bg">
-        <HoneycombDecor className="absolute top-20 right-10 w-48 h-48 opacity-40 hidden lg:block" />
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-honey/5 blur-[120px] pointer-events-none" />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto">
-            Small Team,
-            <br />
-            <span className="gradient-text">Big Ambitions</span>
+      <section className="pt-36 pb-24">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          
+            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
+              About us
+            </p>
+          
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 max-w-4xl mx-auto">
+            Small team, <span className="text-honey-dark">big ambitions</span>
           </h1>
 
-          <FadeIn delay={0.2} animateOnMount>
-            <p className="max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed mx-auto">
+          
+            <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed mx-auto">
               We started Beehive Web Designs because we believed small businesses deserve the
               same quality web presence as the big guys — without the big-agency
               price tag or the corporate runaround.
             </p>
-          </FadeIn>
+          
         </div>
       </section>
 
@@ -88,9 +85,9 @@ export function AboutClient() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/[0.02] to-transparent pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <FadeIn>
+            
               <div>
-                <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+                <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
                   Built by People Who
                   <br />
                   <span className="gradient-text">Get Small Business</span>
@@ -115,9 +112,9 @@ export function AboutClient() {
                   </p>
                 </div>
               </div>
-            </FadeIn>
+            
 
-            <FadeIn delay={0.2}>
+            
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: "150+", label: "Websites Launched", icon: Rocket },
@@ -129,8 +126,8 @@ export function AboutClient() {
                     key={stat.label}
                     className="p-6 rounded-2xl border border-border bg-card/40 hover:border-honey/30 transition-all duration-500 group"
                   >
-                    <stat.icon className="h-6 w-6 text-honey/60 group-hover:text-honey transition-colors mb-3" />
-                    <div className="font-[family-name:var(--font-syne)] text-3xl font-black text-honey glow-text">
+                    <stat.icon className="h-6 w-6 text-honey-dark transition-colors mb-3" />
+                    <div className="text-3xl font-black text-honey-dark glow-text">
                       {stat.value}
                     </div>
                     <div className="text-xs text-muted-foreground mt-1">
@@ -139,56 +136,52 @@ export function AboutClient() {
                   </div>
                 ))}
               </div>
-            </FadeIn>
+            
           </div>
         </div>
       </section> */}
 
       {/* ─── VALUES ─── */}
-      <section className="py-28 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/[0.02] to-transparent pointer-events-none" />
-        <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <FadeIn>
-            <div className="text-center mb-16">
-              <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight">
-                Our Team's
-                <br />
-                <span className="gradient-text">Values</span>
+      <section className="py-24 bg-section-alt">
+        <div className="mx-auto max-w-7xl px-6">
+          
+            <div className="text-center mb-14">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
+                Our values
+              </p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+                What we stand for
               </h2>
             </div>
-          </FadeIn>
+          
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((item, i) => (
-              <FadeIn key={item.title} delay={i * 0.1}>
-                <Card className="bg-card/60 border-border hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
-                  <CardContent className="p-6 text-center">
-                    <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-honey/10 group-hover:bg-honey/20 transition-colors mx-auto">
-                      <item.icon className="h-8 w-8 text-honey" />
-                    </div>
-                    <h3 className="font-[family-name:var(--font-syne)] text-xl font-bold mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-base text-muted-foreground leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </CardContent>
-                </Card>
-              </FadeIn>
+              <div key={item.title} className="h-full">
+                <div className="h-full rounded-2xl bg-card card-soft p-6 text-center">
+                  <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-honey/15 mx-auto">
+                    <item.icon className="h-6 w-6 text-honey-dark" />
+                  </div>
+                  <h3 className="text-lg font-bold mb-3">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <ProcessSection hasHoneycombBg={true} />
+      <AboutDifferentSection />
 
       {/* ─── TEAM ─── */}
       {/* <section className="py-28 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/[0.02] to-transparent pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <FadeIn>
+          
             <div className="text-center mb-16">
-              <h2 className="font-[family-name:var(--font-syne)] text-4xl sm:text-5xl font-bold tracking-tight">
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
                 Meet the
                 <br />
                 <span className="gradient-text">Bees</span>
@@ -198,11 +191,11 @@ export function AboutClient() {
                 development to create websites that make a real difference.
               </p>
             </div>
-          </FadeIn>
+          
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 max-w-3xl gap-6 mx-auto items-stretch">
             {team.map((member, i) => (
-              <FadeIn key={member.id} delay={i * 0.1} className="h-full">
+              <div key={member.id} className="h-full">
                 <Card className="bg-card/60 border-border hover:border-honey/30 transition-all duration-500 group h-full backdrop-blur-sm">
                   <CardContent className="text-center h-full flex flex-col">
                     <div className="mx-auto mb-8 w-40 h-40 rounded-full bg-honey/10 border border-honey/20 flex items-center justify-center group-hover:bg-honey/20 transition-colors overflow-hidden">
@@ -215,13 +208,13 @@ export function AboutClient() {
                           className="w-full h-full object-cover object-center"
                         />
                       ) : (
-                        <Users className="h-16 w-16 text-honey" />
+                        <Users className="h-16 w-16 text-honey-dark" />
                       )}
                     </div>
-                    <h3 className="font-[family-name:var(--font-syne)] text-2xl font-bold">
+                    <h3 className="text-2xl font-bold">
                       {member.name}
                     </h3>
-                    <p className="text-base text-honey-text mt-3 font-medium">
+                    <p className="text-base text-honey-dark mt-3 font-medium">
                       {member.role}
                     </p>
                     {member.linkedin ? (
@@ -232,20 +225,20 @@ export function AboutClient() {
                         className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-honey/10 hover:bg-honey/20 border border-honey/20 hover:border-honey/40 transition-all duration-300 mt-6 mx-auto group/linkedin"
                         aria-label={`${member.name}'s LinkedIn profile`}
                       >
-                        <Linkedin className="h-5 w-5 text-honey group-hover/linkedin:scale-110 transition-transform" />
+                        <Linkedin className="h-5 w-5 text-honey-dark group-hover/linkedin:scale-110 transition-transform" />
                       </a>
                     ) : (
                       <div className="mt-6 h-10" aria-hidden="true" />
                     )}
                   </CardContent>
                 </Card>
-              </FadeIn>
+              
             ))}
           </div>
         </div>
       </section> */}
 
-      <CTABanner />
+      <CTABanner className="bg-section-alt" />
     </PageShell>
   );
 }
