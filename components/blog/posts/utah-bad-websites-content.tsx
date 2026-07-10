@@ -26,7 +26,7 @@ export function UtahBadWebsitesContent() {
 
       <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         Your Website Is Your{" "}
-        <span className="text-honey-text">Digital Storefront</span>
+        <span className="text-honey-dark">Digital Storefront</span>
       </h2>
 
       <p>
@@ -231,7 +231,7 @@ export function UtahBadWebsitesContent() {
 
       <p>
         Ready to fix it?{" "}
-        <Link href="/contact" className="text-honey-text underline underline-offset-2 hover:text-honey-dark transition-colors">
+        <Link href="/contact" className="text-honey-dark underline underline-offset-2 hover:text-honey-dark transition-colors">
           Reach out for a free consultation
         </Link>{" "}
         and we will walk through what is holding your site back — and what a

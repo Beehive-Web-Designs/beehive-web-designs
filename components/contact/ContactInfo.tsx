@@ -1,7 +1,6 @@
 "use client";
 
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import { FadeIn } from "@/components/animations/FadeIn";
 import { BeeMark } from "@/components/bee-logo";
 
 const contactInfo = [
@@ -37,9 +36,9 @@ const contactInfo = [
 
 export function ContactInfo() {
   return (
-    <FadeIn>
+    <>
       <h2 className="text-3xl font-extrabold tracking-tight mb-8">
-        Get in <span className="text-honey">touch</span>
+        Get in <span className="text-honey-dark">touch</span>
       </h2>
 
       <div className="space-y-6">
@@ -64,9 +63,9 @@ export function ContactInfo() {
       {/* Decorative bee */}
       <div className="hidden lg:flex mt-12 items-center justify-center">
         <div className="w-24 h-24 rounded-3xl bg-honey flex items-center justify-center">
-          <BeeMark className="w-18 h-18 text-white" />
+          <BeeMark className="w-18 h-18 text-espresso" />
         </div>
       </div>
-    </FadeIn>
+    </>
   );
 }

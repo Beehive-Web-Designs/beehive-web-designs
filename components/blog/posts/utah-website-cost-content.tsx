@@ -26,7 +26,7 @@ export function UtahWebsiteCostContent() {
 
       <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4">
         The Short Answer: What Utah Small Businesses{" "}
-        <span className="text-honey-text">Actually Pay</span>
+        <span className="text-honey-dark">Actually Pay</span>
       </h2>
 
       <p>
@@ -167,7 +167,7 @@ export function UtahWebsiteCostContent() {
         support. No surprise line items — see our full{" "}
         <Link
           href="/services#pricing"
-          className="text-honey-text underline underline-offset-2 hover:text-honey-dark transition-colors"
+          className="text-honey-dark underline underline-offset-2 hover:text-honey-dark transition-colors"
         >
           pricing breakdown on the services page
         </Link>
@@ -351,7 +351,7 @@ export function UtahWebsiteCostContent() {
         Ready for a number you can plan around?{" "}
         <Link
           href="/contact"
-          className="text-honey-text underline underline-offset-2 hover:text-honey-dark transition-colors"
+          className="text-honey-dark underline underline-offset-2 hover:text-honey-dark transition-colors"
         >
           Request a free consultation
         </Link>{" "}

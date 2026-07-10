@@ -28,7 +28,7 @@ export default function OpenGraphPage() {
             className="flex items-center justify-center bg-honey"
             style={{ width: "96px", height: "96px", borderRadius: "24px" }}
           >
-            <BeeMark className="h-20 w-20 text-white" />
+            <BeeMark className="h-20 w-20 text-espresso" />
           </span>
           <span className="text-6xl font-bold tracking-tight">
             <span className="text-espresso">Beehive</span>{" "}
@@ -48,7 +48,7 @@ export default function OpenGraphPage() {
         >
           Websites that turn
           <br />
-          visitors into <span className="text-honey">customers.</span>
+          visitors into <span className="text-honey-dark">customers.</span>
         </h1>
 
         {/* Subtitle */}

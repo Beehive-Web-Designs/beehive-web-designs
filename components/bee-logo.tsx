@@ -66,7 +66,7 @@ export function BeeLogoLockup({ markSize = "md", className }: BeeLogoLockupProps
   return (
     <span className={`flex items-center gap-2.5 ${className ?? ""}`}>
       <span className={`flex items-center justify-center bg-honey ${badge}`}>
-        <BeeMark className={`text-white ${mark}`} />
+        <BeeMark className={`text-espresso ${mark}`} />
       </span>
       <span className="text-lg font-bold tracking-tight leading-none">
         <span className="text-foreground">Beehive</span>{" "}

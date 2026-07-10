@@ -1,17 +1,21 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/animations/FadeIn";
 import { BeeMark } from "@/components/bee-logo";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-export function CTABanner() {
+type CTABannerProps = {
+  className?: string;
+};
+
+export function CTABanner({ className }: CTABannerProps) {
   return (
-    <section className="py-20">
+    <section className={cn("py-20", className)}>
       <div className="mx-auto max-w-7xl px-6">
-        <FadeIn>
+        
           <div className="rounded-3xl bg-honey px-6 py-16 sm:px-16 text-center">
-            <BeeMark className="mx-auto mb-6 h-14 w-14 text-white" />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-espresso mb-4">
+            <BeeMark className="mx-auto mb-6 h-14 w-14 text-espresso" />
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-espresso mb-4">
               Ready to build a website
               <br />
               that works?
@@ -39,7 +43,7 @@ export function CTABanner() {
               </Button>
             </div>
           </div>
-        </FadeIn>
+        
       </div>
     </section>
   );

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/animations/FadeIn";
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 type PricingPlan = {
   name: string;
@@ -18,6 +18,7 @@ type PricingSectionProps = {
   showBadge?: boolean;
   buttonHref?: string;
   customMessage?: ReactNode;
+  className?: string;
 };
 
 const defaultPlans: PricingPlan[] = [
@@ -65,30 +66,31 @@ export function PricingSection({
   showBadge = true,
   buttonHref = "/contact",
   customMessage,
+  className,
 }: PricingSectionProps) {
   const href = buttonHref.startsWith("#") ? "/contact" : buttonHref;
   return (
-    <section id="pricing" className="py-24 bg-comb-light/60">
+    <section id="pricing" className={cn("py-24", className)}>
       <div className="mx-auto max-w-7xl px-6">
-        <FadeIn>
+        
           <div className="text-center mb-14">
             {showBadge && (
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
                 Pricing
               </p>
             )}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
               Simple, transparent pricing
             </h2>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
               No hidden fees. No surprises. Pick what fits your business.
             </p>
           </div>
-        </FadeIn>
+        
 
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {defaultPlans.map((plan, i) => (
-            <FadeIn key={plan.name} delay={i * 0.1} className="h-full">
+            <div key={plan.name} className="h-full">
               <div
                 className={`relative h-full rounded-2xl p-8 flex flex-col card-soft ${
                   plan.popular ? "bg-honey" : "bg-card"
@@ -118,7 +120,7 @@ export function PricingSection({
                     <span
                       className={`text-lg font-semibold ml-0.5 ${
                         plan.popular
-                          ? "text-espresso/70"
+                          ? "text-espresso"
                           : "text-muted-foreground"
                       }`}
                     >
@@ -163,16 +165,16 @@ export function PricingSection({
                   <Link href={href}>{plan.buttonLabel}</Link>
                 </Button>
               </div>
-            </FadeIn>
+            </div>
           ))}
         </div>
 
         {customMessage && (
-          <FadeIn delay={0.3}>
+          
             <p className="text-center text-sm text-muted-foreground mt-10">
               {customMessage}
             </p>
-          </FadeIn>
+          
         )}
       </div>
     </section>

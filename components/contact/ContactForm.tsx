@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/animations/FadeIn";
 
 type FormState = {
   status: "idle" | "submitting" | "success" | "error";
@@ -99,11 +98,10 @@ export function ContactForm() {
   };
 
   return (
-    <FadeIn delay={0.2}>
-      <div className="rounded-2xl bg-card card-soft p-8 sm:p-10">
-        <h3 className="text-2xl font-extrabold mb-2">
+    <div className="min-h-[640px] rounded-2xl bg-card card-soft p-8 sm:p-10">
+        <p className="text-2xl font-extrabold mb-2">
           Send us a message
-        </h3>
+        </p>
         <p className="text-sm text-muted-foreground mb-8">
           Fill out the form below and we&apos;ll get back to you within 24 hours.
           No spam, no pressure — just a friendly conversation.
@@ -209,7 +207,7 @@ export function ContactForm() {
                 htmlFor="phone"
                 className="block text-sm font-medium mb-2 text-text-label"
               >
-                Phone <span className="text-text-placeholder">(optional)</span>
+                Phone <span className="text-muted-foreground">(optional)</span>
               </label>
               <input
                 id="phone"
@@ -282,11 +280,10 @@ export function ContactForm() {
             )}
           </Button>
 
-          <p className="text-center text-xs text-text-placeholder">
+          <p className="text-center text-xs text-muted-foreground">
             We respect your privacy. No spam, ever.
           </p>
         </form>
-      </div>
-    </FadeIn>
+    </div>
   );
 }

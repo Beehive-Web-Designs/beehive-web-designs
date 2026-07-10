@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
     loader: 'custom',
     loaderFile: './my-loader.ts',
   },
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+    optimizeCss: true,
+  },
 };
 
 export default nextConfig;

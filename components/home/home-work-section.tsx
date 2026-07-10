@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { FadeIn } from "@/components/animations/FadeIn";
 
 type Project = {
   name: string;
@@ -23,22 +22,22 @@ const projects: Project[] = [
     name: "Buugz Auto Detailing",
     detail: "Design + build from scratch",
     href: "https://buugz-auto-detailing.netlify.app/",
-    image: "/work/buugz-auto-detailing.png",
+    image: "/work/buugz-auto-detailing.jpg",
     imageAlt: "Buugz Auto Detailing homepage",
   },
 ];
 
 export function HomeWorkSection() {
   return (
-    <section id="work" className="py-24 bg-comb-light/60">
+    <section id="work" className="py-24 bg-section-alt">
       <div className="mx-auto max-w-7xl px-6">
-        <FadeIn>
+        
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
                 Recent work
               </p>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
                 Real sites for real businesses
               </h2>
             </div>
@@ -49,7 +48,7 @@ export function HomeWorkSection() {
               Start yours <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-        </FadeIn>
+        
 
         <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
           {projects.map((project, i) => {
@@ -60,7 +59,6 @@ export function HomeWorkSection() {
                     src={project.image}
                     alt={project.imageAlt}
                     fill
-                    unoptimized
                     className="object-cover object-top"
                     sizes="(max-width: 768px) 100vw, 448px"
                   />
@@ -75,7 +73,7 @@ export function HomeWorkSection() {
             );
 
             return (
-              <FadeIn key={project.name} delay={i * 0.1} className="h-full">
+              <div key={project.name} className="h-full">
                 <a
                   href={project.href}
                   target="_blank"
@@ -84,7 +82,7 @@ export function HomeWorkSection() {
                 >
                   {card}
                 </a>
-              </FadeIn>
+              </div>
             );
           })}
         </div>

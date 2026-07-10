@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import {
   Globe,
   Search,
@@ -19,11 +20,18 @@ import {
   Target,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PageShell } from "@/components/page-shell";
-import { FadeIn } from "@/components/animations/FadeIn";
-import { PricingSection } from "@/components/pricing-section";
 import Link from "next/link";
-import { CTABanner } from "@/components/cta-banner";
+
+const PricingSection = dynamic(
+  () =>
+    import("@/components/pricing-section").then((mod) => mod.PricingSection),
+  { loading: () => <div className="py-24" aria-hidden="true" /> }
+);
+
+const CTABanner = dynamic(
+  () => import("@/components/cta-banner").then((mod) => mod.CTABanner),
+  { loading: () => <div className="py-20" aria-hidden="true" /> }
+);
 
 const services = [
   {
@@ -73,59 +81,18 @@ const services = [
   },
 ];
 
-export function ServicesClient() {
+export function ServicesDetails() {
   return (
-    <PageShell>
-      {/* ─── HERO ─── */}
-      <section className="pt-36 pb-24">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <FadeIn animateOnMount>
-            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
-              What we do
-            </p>
-          </FadeIn>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 max-w-3xl mx-auto">
-            Your complete{" "}
-            <span className="text-honey">website solution</span>
-          </h1>
-
-          <FadeIn delay={0.2} animateOnMount>
-            <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed mx-auto">
-              Stop juggling multiple vendors. Beehive handles your entire web
-              presence — from design and development to hosting and SEO — so
-              you can focus on running your business.
-            </p>
-          </FadeIn>
-
-          {/* Quick nav */}
-          <FadeIn delay={0.3} animateOnMount>
-            <div className="flex flex-wrap gap-3 mt-10 justify-center">
-              {services.map((s) => (
-                <Link
-                  key={s.id}
-                  href={`#${s.id}`}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary hover:bg-comb-light transition-all text-sm text-foreground font-medium"
-                >
-                  <s.icon className="h-4 w-4 text-honey-dark" />
-                  {s.title}
-                </Link>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ─── SERVICES DETAIL SECTIONS ─── */}
+    <>
       {services.map((service, idx) => (
         <section
           key={service.id}
           id={service.id}
-          className={`py-24 ${idx % 2 === 0 ? "bg-comb-light/60" : ""}`}
+          className={`py-24 ${idx % 2 === 0 ? "bg-section-alt" : ""}`}
         >
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
-              {/* Left: Info */}
-              <FadeIn>
+              
                 <div className={idx % 2 !== 0 ? "lg:order-2" : ""}>
                   <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-honey/15 mb-6">
                     <service.icon className="h-7 w-7 text-honey-dark" />
@@ -148,10 +115,9 @@ export function ServicesClient() {
                     </Link>
                   </Button>
                 </div>
-              </FadeIn>
+              
 
-              {/* Right: Features grid */}
-              <FadeIn delay={0.2}>
+              
                 <div className={`grid sm:grid-cols-2 gap-4 ${idx % 2 !== 0 ? "lg:order-1" : ""}`}>
                   {service.features.map((feat) => (
                     <div
@@ -166,17 +132,14 @@ export function ServicesClient() {
                     </div>
                   ))}
                 </div>
-              </FadeIn>
+              
             </div>
           </div>
         </section>
       ))}
 
-      {/* ─── PRICING ─── */}
       <PricingSection buttonHref="/contact" />
-
-      {/* ─── CTA BANNER ─── */}
-      <CTABanner />
-    </PageShell>
+      <CTABanner className="bg-section-alt" />
+    </>
   );
 }

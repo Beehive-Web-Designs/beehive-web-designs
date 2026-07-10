@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { BlogClient } from "./blog-client";
-
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://beehivewebdesigns.com";
+import { ogImageUrl, siteUrl } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Blog",
+    title: "Web Design & SEO Blog",
     description:
       "Practical web design, hosting, and local SEO tips for small businesses in Utah. Learn how to fix bad websites, win more customers, and grow online.",
     keywords: [
@@ -21,13 +19,13 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       type: "website",
-      url: `${baseUrl}/blog`,
-      title: "Blog | Beehive Web Designs",
+      url: `${siteUrl}/blog`,
+      title: "Web Design & SEO Blog | Beehive Web Designs",
       description:
         "Practical web design, hosting, and local SEO tips for small businesses in Utah.",
       images: [
         {
-          url: `${baseUrl}/og-image.jpg`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: "Beehive Web Designs Blog",
@@ -36,10 +34,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Blog | Beehive Web Designs",
+      title: "Web Design & SEO Blog | Beehive Web Designs",
       description:
         "Practical web design, hosting, and local SEO tips for small businesses in Utah.",
-      images: [`${baseUrl}/og-image.jpg`],
+      images: [ogImageUrl],
     },
   };
 }

@@ -1,5 +1,4 @@
 import { Check, X } from "lucide-react";
-import { FadeIn } from "@/components/animations/FadeIn";
 import { BeeLogoLockup } from "@/components/bee-logo";
 
 const comparisons = [
@@ -29,7 +28,7 @@ export function AboutDifferentSection() {
   return (
     <section id="different" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <FadeIn>
+        
           <div className="text-center mb-14">
             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
               Why we&apos;re different
@@ -43,9 +42,9 @@ export function AboutDifferentSection() {
               corporate runaround. Here&apos;s how we do things differently.
             </p>
           </div>
-        </FadeIn>
+        
 
-        <FadeIn delay={0.1}>
+        
           <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-border bg-card card-soft">
             <div className="grid grid-cols-2 border-b border-border bg-muted/40">
               <div className="px-5 py-4 sm:px-8 sm:py-5">
@@ -81,7 +80,7 @@ export function AboutDifferentSection() {
               ))}
             </div>
           </div>
-        </FadeIn>
+        
       </div>
     </section>
   );

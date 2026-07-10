@@ -1,5 +1,4 @@
 import { Star } from "lucide-react";
-import { FadeIn } from "@/components/animations/FadeIn";
 
 const testimonials = [
   {
@@ -29,25 +28,25 @@ export function HomeTestimonialsSection() {
   return (
     <section id="testimonials" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <FadeIn>
+        
           <div className="text-center mb-14">
             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-honey-dark">
               Kind words
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
               Loved by small-business
               <br className="hidden sm:block" /> owners
             </h2>
           </div>
-        </FadeIn>
+        
 
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
-            <FadeIn key={t.name} delay={i * 0.1} className="h-full">
+            <div key={t.name} className="h-full">
               <div className="h-full rounded-2xl bg-card card-soft p-8 flex flex-col">
                 <div className="flex gap-1 mb-5">
                   {Array.from({ length: t.rating }).map((_, si) => (
-                    <Star key={si} className="h-4 w-4 text-honey fill-honey" />
+                    <Star key={si} className="h-4 w-4 text-honey-dark fill-honey-dark" />
                   ))}
                 </div>
                 <p className="text-sm text-text-label leading-relaxed mb-6 flex-1">
@@ -60,7 +59,7 @@ export function HomeTestimonialsSection() {
                   </div>
                 </div>
               </div>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>
